@@ -17,3 +17,45 @@ angular.module('starter', ['ionic'])
     }
   });
 })
+
+.config(function($stateProvider, $urlRouterProvider) {
+
+  $stateProvider
+
+	// Role selection
+	.state('roleSelect',{
+		url: '/roleselect',
+		templateUrl: 'templates/roleSelect.html'
+	})
+	
+	.state('tab', {
+		url: '/tab',
+		abstract: true,
+		templateUrl: 'templates/tab.html'
+ 	})
+	
+	.state('tab.event',{
+		url: '/event',
+		views: {
+			'event' : {
+				templateUrl: 'templates/eventDash.html'
+			}
+		}
+	})
+	
+	.state('tab.entrants',{
+		url: '/entrants',
+		views: {
+			'entrants' : {
+				templateUrl: 'templates/entrants.html'
+			}
+		}
+	})
+	
+	;
+  // if none of the above states are matched, use this as the fallback
+  $urlRouterProvider.otherwise('/roleselect');
+
+})
+
+;

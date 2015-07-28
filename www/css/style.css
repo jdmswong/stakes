@@ -1,1 +1,10 @@
-/* Empty. Add your own CSS if you like */
+.role-select {
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 20px !important;
+	width: 85% !important;
+}
+
+.role-select:first-of-type {
+	margin-top: 70px !important;
+}
