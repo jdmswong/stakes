@@ -44,6 +44,7 @@ angular.module('stakes.controllers', [])
 	
 	$scope.attendees = [
 		{
+			id: 1,
 			name: 'JD Wong',
 			company: 'Stakes',
 			position: 'Founder',
@@ -51,6 +52,7 @@ angular.module('stakes.controllers', [])
 			phone: '123-456-7890',
 			face: 'https://avatars3.githubusercontent.com/u/782984?v=3&s=460'
 		}, {
+			id: 2,
 			name: 'Sean Chatman',
 			company: 'Stakes',
 			position: 'Founder',
@@ -58,6 +60,7 @@ angular.module('stakes.controllers', [])
 			phone: '123-456-7890',
 			face: 'https://avatars1.githubusercontent.com/u/1606037?v=3&s=400'
 		}, {
+			id: 3,
 			name: 'Adam Bradley',
 			company: 'Ionic',
 			position: 'Developer',
@@ -65,6 +68,7 @@ angular.module('stakes.controllers', [])
 			phone: '123-456-7890',
 			face: 'https://avatars0.githubusercontent.com/u/452425?v=3&s=400'
 		}, {
+			id: 4,
 			name: 'Ben Sperry',
 			company: 'Drifty Co',
 			position: 'Developer',
@@ -72,6 +76,7 @@ angular.module('stakes.controllers', [])
 			phone: '123-456-7890',
 			face: 'https://avatars3.githubusercontent.com/u/519526?v=3&s=400'
 		}, {
+			id: 5,
 			name: 'James Lloyd',
 			company: 'The Awesome Company',
 			position: 'Awesome dude',
@@ -80,6 +85,12 @@ angular.module('stakes.controllers', [])
 			face: 'https://avatars2.githubusercontent.com/u/1720477?v=3&s=400'
 		}
 	];
+	
+})
+
+.controller('AttendeeDetailCtrl', function($scope, $stateParams) {
+	
+	$scope.id = $stateParams.attendeeId;
 	
 })
 
