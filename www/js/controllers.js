@@ -18,9 +18,9 @@ angular.module('stakes.controllers', [])
 	
 })
 
-.controller('AttendeeDetailCtrl', function($scope, $stateParams) {
+.controller('AttendeeDetailCtrl', function($scope, $stateParams, Attendees) {
 	
-	$scope.id = $stateParams.attendeeId;
+	$scope.attendee = Attendees.getAttendee( $stateParams.attendeeId );
 	
 })
 

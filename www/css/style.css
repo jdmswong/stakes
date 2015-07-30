@@ -8,3 +8,8 @@
 .role-select:first-of-type {
 	margin-top: 70px !important;
 }
+
+.big-face {
+	margin: 20px;
+	width: 68% !important;
+}
