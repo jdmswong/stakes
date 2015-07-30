@@ -1,5 +1,23 @@
 <ion-view view-title="Entrants">
 	<ion-content>
-		Entrants
+		<div class="list card" ng-repeat="entrant in entrants">
+			
+			<div class="item">
+				<h2>{{ entrant.name }}</h2>
+			</div>
+			
+			<div class="item avatar-set item-text-wrap">
+				<img 
+					ng-repeat="rep in getReps(entrant)" 
+					ng-src="{{ rep.face }}" 
+					ui-sref="tab.rep-detail({ attendeeId: rep.id })"
+				/>
+			</div>
+			
+			<div class="item">
+				<p>{{ entrant.pitch }}</p>
+			</div>
+			
+		</div>
 	</ion-content>
 </ion-view>

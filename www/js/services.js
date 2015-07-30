@@ -107,4 +107,45 @@ angular.module('stakes.services', [])
 	}
 })
 
+.factory( 'Entrants', function(){
+	
+	var entrants = [
+		{
+			id: 1,
+			name: 'Stakes',
+			reps: [
+				1, 2
+			],
+			pitch: 'Bet on contests, win big!'
+		}, {
+			id: 2,
+			name: 'Fun tracker!',
+			reps: [
+				3
+			],
+			pitch: 'Track your activities'
+		}, {
+			id: 3,
+			name: 'Workout scheduler',
+			reps: [
+				4, 2, 5, 3, 1
+			],
+			pitch: 'Schedule your workouts and track progress'
+		}
+	];
+	
+	return {
+		all: function(){
+			return entrants;
+		},
+		getEntrant: function(entrantId) {
+			for( var i=0; i < entrants.length; i++){
+				if( entrants[i].id === parseInt(entrantId) ){
+					return entrants[i];
+				}
+			}
+		}
+	};
+})
+
 ;
