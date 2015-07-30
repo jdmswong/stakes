@@ -15,7 +15,7 @@ angular.module('stakes.controllers', [])
 			type: 'chat', 
 			from: 'Derek', 
 			message: "Hi JD!", 
-			face: 'https://avatars3.githubusercontent.com/u/11214?v=3&s=460',
+			face: 'https://avatars3.githubusercontent.com/u/519526?v=3&s=400',
 			timestamp: 12360
 		}, {
 			type: 'notification', 
@@ -25,8 +25,12 @@ angular.module('stakes.controllers', [])
 			type: 'chat', 
 			from: 'Charley', 
 			message: "Who wants to get food?", 
-			face: 'https://avatars3.githubusercontent.com/u/574719?v=3&s=400',
+			face: 'https://avatars2.githubusercontent.com/u/1720477?v=3&s=400',
 			timestamp: 12379
+		}, {
+			type: 'notification', 
+			message: "New startup: 'Workout scheduler'", 
+			timestamp: 12391
 		}
 	];
 	
@@ -35,6 +39,49 @@ angular.module('stakes.controllers', [])
 })
 
 .controller('EntrantsCtrl', function($scope) {})
+
+.controller('AttendeesCtrl', function($scope) {
+	
+	$scope.attendees = [
+		{
+			name: 'JD Wong',
+			company: 'Stakes',
+			position: 'Founder',
+			email: 'jdmswong@gmail.com',
+			phone: '123-456-7890',
+			face: 'https://avatars3.githubusercontent.com/u/782984?v=3&s=460'
+		}, {
+			name: 'Sean Chatman',
+			company: 'Stakes',
+			position: 'Founder',
+			email: 'hypetechio@gmail.com',
+			phone: '123-456-7890',
+			face: 'https://avatars1.githubusercontent.com/u/1606037?v=3&s=400'
+		}, {
+			name: 'Adam Bradley',
+			company: 'Ionic',
+			position: 'Developer',
+			email: 'asfd@safasdf.com',
+			phone: '123-456-7890',
+			face: 'https://avatars0.githubusercontent.com/u/452425?v=3&s=400'
+		}, {
+			name: 'Ben Sperry',
+			company: 'Drifty Co',
+			position: 'Developer',
+			email: 'lsdfj@asldf.com',
+			phone: '123-456-7890',
+			face: 'https://avatars3.githubusercontent.com/u/519526?v=3&s=400'
+		}, {
+			name: 'James Lloyd',
+			company: 'The Awesome Company',
+			position: 'Awesome dude',
+			email: 'asdlf@gnsd.com',
+			phone: '123-456-7890',
+			face: 'https://avatars2.githubusercontent.com/u/1720477?v=3&s=400'
+		}
+	];
+	
+})
 
 ;
 

@@ -1,0 +1,14 @@
+<ion-view view-title="Attendees">
+	<ion-content>
+		<div class="list">
+			<ion-item 
+				class="item-text-wrap item-avatar" 
+				ng-repeat="attendee in attendees"
+			>
+				<img ng-src="{{attendee.face}}" />
+				<h2>{{ attendee.name }}</h2>
+				<p>{{ attendee.company }} - {{ attendee.position }}</p>
+			</ion-item>
+		</div>
+	</ion-content>
+</ion-view>

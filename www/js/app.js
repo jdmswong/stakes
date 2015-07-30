@@ -55,6 +55,16 @@ angular.module('stakes', ['ionic', 'stakes.controllers'])
 		}
 	})
 	
+	.state('tab.attendees',{
+		url: '/attendees',
+		views: {
+			'attendees' : {
+				templateUrl: 'templates/attendees.html',
+				controller: 'AttendeesCtrl'
+			}
+		}
+	})
+	
 	;
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/roleselect');
