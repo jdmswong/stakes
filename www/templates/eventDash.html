@@ -1,9 +1,17 @@
 <ion-view view-title="Event Dashboard">
 	<ion-content>
-		<ion-list>
-			<ion-item ng-repeat="notification in notifications">
+		<div class="list">
+			<ion-item 
+				ng-class="notification.type === 'chat' ? 'item-avatar' : '' " 
+				class="item-text-wrap" 
+				ng-repeat="notification in notifications"
+			>
+				<img 
+					ng-if="notification.type === 'chat' " 
+					ng-src="{{notification.face}}" 
+				/>
 				{{ notification.message }}
 			</ion-item>
-		</ion-list>
+		</div>
 	</ion-content>
 </ion-view>
