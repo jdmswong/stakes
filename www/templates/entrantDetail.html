@@ -1,0 +1,20 @@
+<ion-view view-title="{{ entrant.name }}">
+	<ion-content>
+		<div class="card">
+			<ion-item class="item-text-wrap avatar-set">
+				<img 
+					ng-repeat="rep in getReps(entrant)" 
+					ng-src="{{ rep.face }}" 
+					ui-sref="tab.rep-detail({ attendeeId: rep.id })"
+				/>
+			</ion-item>
+			<ion-item>
+				{{ entrant.premise }}
+			</ion-item>
+			<ion-item class="item-body">
+				{{ entrant.pitch }}
+			</ion-item>
+				
+		</div>
+	</ion-content>
+</ion-view>

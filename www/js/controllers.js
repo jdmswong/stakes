@@ -23,6 +23,20 @@ angular.module('stakes.controllers', [])
 	
 })
 
+.controller('EntrantDetailCtrl', function($scope, $stateParams, Entrants, Attendees){
+	
+	$scope.entrant = Entrants.getEntrant($stateParams.entrantId);
+	$scope.getReps = function(){
+		var result = [];
+		for( var i=0; i < $scope.entrant.reps.length; i++){
+			result.push( Attendees.getAttendee($scope.entrant.reps[i]) );
+		}
+		return result;
+	};
+	
+	
+})
+
 .controller('AttendeesCtrl', function($scope, Attendees) {
 	
 	$scope.attendees = Attendees.all();

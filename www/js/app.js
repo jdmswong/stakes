@@ -35,6 +35,7 @@ angular.module('stakes', ['ionic', 'stakes.controllers', 'stakes.services'])
 		templateUrl: 'templates/tab.html'
  	})
 	
+	// Event tab
 	.state('tab.event',{
 		url: '/event',
 		views: {
@@ -45,6 +46,7 @@ angular.module('stakes', ['ionic', 'stakes.controllers', 'stakes.services'])
 		}
 	})
 	
+	// Entrants tab
 	.state('tab.entrants',{
 		url: '/entrants',
 		views: {
@@ -55,6 +57,27 @@ angular.module('stakes', ['ionic', 'stakes.controllers', 'stakes.services'])
 		}
 	})
 	
+	.state('tab.rep-detail',{
+		url: '/entrants/rep/:attendeeId',
+		views: {
+			'entrants': {
+				templateUrl: 'templates/attendeeDetail.html',
+				controller: 'AttendeeDetailCtrl'
+			}
+		}
+	})
+	
+	.state('tab.entrant-detail',{
+		url: '/entrants/:entrantId',
+		views: {
+			'entrants': {
+				templateUrl: 'templates/entrantDetail.html',
+				controller: 'EntrantDetailCtrl'
+			}
+		}
+	})
+	
+	// Attendees tab
 	.state('tab.attendees',{
 		url: '/attendees',
 		views: {
@@ -69,16 +92,6 @@ angular.module('stakes', ['ionic', 'stakes.controllers', 'stakes.services'])
 		url: '/attendees/:attendeeId',
 		views: {
 			'attendees': {
-				templateUrl: 'templates/attendeeDetail.html',
-				controller: 'AttendeeDetailCtrl'
-			}
-		}
-	})
-	
-	.state('tab.rep-detail',{
-		url: '/entrants/:attendeeId',
-		views: {
-			'entrants': {
 				templateUrl: 'templates/attendeeDetail.html',
 				controller: 'AttendeeDetailCtrl'
 			}
