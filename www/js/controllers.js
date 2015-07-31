@@ -1,4 +1,4 @@
-angular.module('stakes.controllers', [])
+angular.module('stakes.controllers', ['ionic.rating'])
 
 .controller('RoleSelectCtrl', function($scope) {})
 
@@ -34,6 +34,8 @@ angular.module('stakes.controllers', [])
 		return result;
 	};
 	
+	$scope.rate = 3;
+	$scope.max = 5;
 	
 })
 
