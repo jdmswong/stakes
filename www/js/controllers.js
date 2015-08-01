@@ -1,6 +1,10 @@
 angular.module('stakes.controllers', ['ionic.rating'])
 
-.controller('RoleSelectCtrl', function($scope) {})
+.controller('RoleSelectCtrl', function($scope, Roles) {
+	
+	$scope.setRole = Roles.setRole;
+	
+})
 
 .controller('EventCtrl', function($scope, Notifications) {
 	

@@ -1,5 +1,26 @@
 angular.module('stakes.services', [])
 
+.factory('Roles', function(){
+	var role = undefined;
+	return {
+		getRole: function(){
+			return role;
+		},
+		setRole: function(newRole){
+			if( 
+				newRole === 'entrant' ||
+				newRole === 'judge' ||
+				newRole === 'audience'
+			){
+				role = newRole;
+				return role;
+			} else {
+				return -1;
+			}
+		}
+	};
+})
+
 .factory('Notifications', function(Attendees){
 	// Might use a resource here that returns a JSON array
 
