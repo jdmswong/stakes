@@ -19,3 +19,8 @@
 	border-radius: 50%;
 	margin-right: 15px;	
 }
+
+.msg-bar label{
+	width: 100%;
+	margin-right: 3px;
+}
