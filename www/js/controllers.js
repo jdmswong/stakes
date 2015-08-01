@@ -4,10 +4,13 @@ angular.module('stakes.controllers', ['ionic.rating'])
 
 .controller('EventCtrl', function($scope, Notifications) {
 	
+	// USER ID HARD CODED
+	userId = 1; // 1 = JD
+	
 	$scope.notifications = Notifications.all();
 	
 	$scope.submitMsg = function(){
-		Notifications.pushMsg($scope.msgText);
+		Notifications.pushMsg($scope.msgText, userId);
 		$scope.msgText = '';
 	};
 	$scope.onKeyDown = function(event){

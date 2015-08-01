@@ -1,6 +1,6 @@
 angular.module('stakes.services', [])
 
-.factory('Notifications', function(){
+.factory('Notifications', function(Attendees){
 	// Might use a resource here that returns a JSON array
 
   // Some fake testing data
@@ -8,18 +8,21 @@ angular.module('stakes.services', [])
 		{
 			id: 1,
 			type: 'chat', 
-			from: 'JD', 
-			message: "Hi everybody!!", 
-			face: 'https://avatars2.githubusercontent.com/u/1720477?v=3&s=400',
+			message: "Hi everybody!", 
+			from: { 
+				attendeeId: 1, 
+				face: 'https://avatars3.githubusercontent.com/u/782984?v=3&s=460'
+			},
 			timestamp: 12345
 		}
-		/*
 		, {
 			id: 2,
 			type: 'chat', 
-			from: 'Derek', 
-			message: "Hi JD!", 
-			face: 'https://avatars3.githubusercontent.com/u/519526?v=3&s=400',
+			from: {
+				attendeeId: 4,
+				face: 'https://avatars3.githubusercontent.com/u/519526?v=3&s=400'
+			}, 
+			message: "Hi there!", 
 			timestamp: 12360
 		}, {
 			id: 3,
@@ -29,9 +32,11 @@ angular.module('stakes.services', [])
 		}, {
 			id: 4,
 			type: 'chat', 
-			from: 'Charley', 
+			from: {
+				attendeeId: 3,
+				face: 'https://avatars0.githubusercontent.com/u/452425?v=3&s=400'
+			}, 
 			message: "Who wants to get food?", 
-			face: 'https://avatars2.githubusercontent.com/u/1720477?v=3&s=400',
 			timestamp: 12379
 		}, {
 			id: 5,
@@ -39,17 +44,21 @@ angular.module('stakes.services', [])
 			message: "New startup: 'Workout scheduler'", 
 			timestamp: 12391
 		}
-	*/
 	];
 	
-	var constructMsg = function(newMsg){
+	var constructMsg = function(newMsg, userId){
 		var newId = notifications[length-1] + 1;
+		
+		var user = Attendees.getAttendee(userId);
+		
 		var result = {
 			id: newId,
 			type: 'chat',
-			from: 'me',
-			message: newMsg,
-			face: 'https://avatars3.githubusercontent.com/u/782984?v=3&s=460',
+			from: {
+				attendeeId: user.id,
+				face: user.face
+			},
+			message: newMsg
 		};
 		return result;
 	};
@@ -58,10 +67,10 @@ angular.module('stakes.services', [])
 		all: function(){
 			return notifications;
 		},
-		pushMsg: function(newMsg){
+		pushMsg: function(newMsg, userId){
 			if( newMsg === undefined || newMsg.length <= 0 )
 				return;
-			var result = constructMsg(newMsg);
+			var result = constructMsg(newMsg, userId);
 			notifications.push(result);
 		}
 	};

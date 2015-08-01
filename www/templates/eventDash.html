@@ -8,7 +8,8 @@
 			>
 				<img 
 					ng-if="notification.type === 'chat' " 
-					ng-src="{{notification.face}}" 
+					ng-src="{{notification.from.face}}" 
+				  ui-sref="tab.event-person-detail({ attendeeId: notification.from.attendeeId })"
 				/>
 				{{ notification.message }}
 			</ion-item>

@@ -46,6 +46,16 @@ angular.module('stakes', ['ionic', 'stakes.controllers', 'stakes.services'])
 		}
 	})
 	
+	.state('tab.event-person-detail', {
+		url: '/event/person/:attendeeId',
+		views: {
+			'event': {
+				templateUrl: 'templates/attendeeDetail.html',
+				controller: 'AttendeeDetailCtrl'
+			}
+		}
+	})
+	
 	// Entrants tab
 	.state('tab.entrants',{
 		url: '/entrants',
