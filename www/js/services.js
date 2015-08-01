@@ -10,9 +10,11 @@ angular.module('stakes.services', [])
 			type: 'chat', 
 			from: 'JD', 
 			message: "Hi everybody!!", 
-			face: 'https://avatars3.githubusercontent.com/u/782984?v=3&s=460',
+			face: 'https://avatars2.githubusercontent.com/u/1720477?v=3&s=400',
 			timestamp: 12345
-		}, {
+		}
+		/*
+		, {
 			id: 2,
 			type: 'chat', 
 			from: 'Derek', 
@@ -37,11 +39,30 @@ angular.module('stakes.services', [])
 			message: "New startup: 'Workout scheduler'", 
 			timestamp: 12391
 		}
+	*/
 	];
 	
+	var constructMsg = function(newMsg){
+		var newId = notifications[length-1] + 1;
+		var result = {
+			id: newId,
+			type: 'chat',
+			from: 'me',
+			message: newMsg,
+			face: 'https://avatars3.githubusercontent.com/u/782984?v=3&s=460',
+		};
+		return result;
+	};
+	
 	return {
-		all: function() {
+		all: function(){
 			return notifications;
+		},
+		pushMsg: function(newMsg){
+			if( newMsg === undefined || newMsg.length <= 0 )
+				return;
+			var result = constructMsg(newMsg);
+			notifications.push(result);
 		}
 	};
 	

@@ -7,7 +7,8 @@ angular.module('stakes.controllers', ['ionic.rating'])
 	$scope.notifications = Notifications.all();
 	
 	$scope.submitMsg = function(){
-		alert($scope.msgText);
+		Notifications.pushMsg($scope.msgText);
+		$scope.msgText = '';
 	};
 	$scope.onKeyDown = function(event){
 		// On enter
