@@ -13,5 +13,23 @@
 				{{ notification.message }}
 			</ion-item>
 		</div>
+		
 	</ion-content>
+	
+	<ion-footer-bar class="bar-dark">
+		<div class="row">
+			<div class="col col-80">
+				<label class="item item-input">
+					<input type="text" placeholder="Say hello!">
+				</label>
+			</div>
+			<div class="col col-20">
+				<div class="buttons pull-right" ng-click="doSomething()">
+					<button class="button button-clear">
+						<i class="icon ion-chatbox"></i>
+					</button>
+				</div>
+			</div>
+		</div>
+	</ion-footer-bar>
 </ion-view>
