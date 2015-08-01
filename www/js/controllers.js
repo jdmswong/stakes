@@ -6,7 +6,14 @@ angular.module('stakes.controllers', ['ionic.rating'])
 	
 	$scope.notifications = Notifications.all();
 	
-	
+	$scope.submitMsg = function(){
+		alert($scope.msgText);
+	};
+	$scope.onKeyDown = function(event){
+		// On enter
+		if( event.which === 13 )
+			$scope.submitMsg();
+	};
 	
 })
 

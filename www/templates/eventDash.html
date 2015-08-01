@@ -18,10 +18,15 @@
 	
 	<ion-footer-bar class="bar-dark msg-bar">
 		<label class="item item-input">
-			<input type="text" placeholder="Say hello!">
+			<input 
+				type="text" 
+				placeholder="Say hello!" 
+				ng-model="msgText" 
+				ng-keydown="onKeyDown($event)"
+			>
 		</label>
-		<div class="buttons" ng-click="doSomething()">
-			<button class="button button-clear">
+		<div class="buttons">
+			<button class="button button-clear" ng-click="submitMsg()">
 				<i class="icon ion-chatbox"></i>
 			</button>
 		</div>
