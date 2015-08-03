@@ -117,7 +117,7 @@ angular.module('stakes.services', [])
 			email: 'hypetechio@gmail.com',
 			phone: '123-456-7890',
 			face: 'https://avatars1.githubusercontent.com/u/1606037?v=3&s=400'
-		}, {
+		}/*, {
 			id: 3,
 			name: 'Adam Bradley',
 			company: 'Ionic',
@@ -141,8 +141,30 @@ angular.module('stakes.services', [])
 			email: 'asdlf@gnsd.com',
 			phone: '123-456-7890',
 			face: 'https://avatars2.githubusercontent.com/u/1720477?v=3&s=400'
-		}
+		}*/
 	];
+	
+var registerAttendee = function(name, company, position, email, phone){
+		
+		var newId = attendees[attendees.length-1].id + 1;
+		
+		// Default to placeholder
+		var faceURI = 'img/ProfilePlaceholderSuit.png';
+		
+		var newAttendee = {
+			id: newId,
+			name: name,
+			company: company,
+			position: position,
+			email: email,
+			phone: phone,
+			face: faceURI
+		};
+		
+		attendees.push( newAttendee );
+		
+	};
+	
 	
 	return {
 		all: function(){
@@ -154,7 +176,8 @@ angular.module('stakes.services', [])
 					return attendees[i];
 				}
 			}
-		}
+		},
+		register: registerAttendee
 	}
 })
 
