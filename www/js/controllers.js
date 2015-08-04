@@ -1,8 +1,8 @@
 angular.module('stakes.controllers', ['ionic.rating'])
 
-.controller('RoleSelectCtrl', function($scope, Roles) {
+.controller('RoleSelectCtrl', function($scope) {
 	
-	$scope.setRole = Roles.setRole;
+	
 	
 })
 
@@ -60,7 +60,10 @@ angular.module('stakes.controllers', ['ionic.rating'])
 	
 	$scope.attendees = Attendees.all();
 	
-	Attendees.register( 'TESTMAN', 'TEST COMPANY', 'KING OF THE LAND', 'lol@asdf.com', '123-456-7890' );
+	$scope.register = function(){
+		
+		Attendees.register( 'TESTMAN', 'TEST COMPANY', 'KING OF THE LAND', 'lol@asdf.com', '123-456-7890' );
+	};
 	
 	
 })
