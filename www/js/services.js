@@ -8,11 +8,23 @@ angular.module('stakes.services', [])
 		
 	};
 	
+	var loggedIn = function(){
+		return typeof(user.id) != "undefined";
+	};
+	
 	return {
 		setUser: setUser,
 		getUser: function(){
 			return user;
-		}
+		},
+		getUserId: function(){
+			if( loggedIn() ){
+				return user.id;
+			}else{
+				return undefined;
+			}
+		},
+		loggedIn: loggedIn
 	};
 })
 

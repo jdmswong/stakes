@@ -6,16 +6,18 @@ angular.module('stakes.controllers', ['ionic.rating'])
 	
 })
 
-.controller('EventCtrl', function($scope, Notifications) {
+.controller('EventCtrl', function($scope, Notifications, User) {
 	
-	// USER ID HARD CODED
-	userId = 1; // 1 = JD
 	
 	$scope.notifications = Notifications.all();
 	
 	$scope.submitMsg = function(){
-		Notifications.pushMsg($scope.msgText, userId);
-		$scope.msgText = '';
+		if( User.loggedIn() ){
+			Notifications.pushMsg( $scope.msgText, User.getUserId() );
+			$scope.msgText = '';
+		}else{
+			
+		}
 	};
 	$scope.onKeyDown = function(event){
 		// On enter
