@@ -49,7 +49,7 @@ angular.module('stakes', ['ionic', 'stakes.controllers', 'stakes.services'])
 	.state('tab.event.notifications',{
 		url: '/notifications',
 		views: {
-			'notifications': {
+			'event-sub': {
 				templateUrl: 'templates/notifications.html',
 				controller: 'EventCtrl'
 			}
@@ -59,7 +59,7 @@ angular.module('stakes', ['ionic', 'stakes.controllers', 'stakes.services'])
 	.state('tab.event.chat',{
 		url: '/chat',
 		views: {
-			'chat': {
+			'event-sub': {
 				templateUrl: 'templates/chat.html',
 				controller: 'EventCtrl'
 			}
