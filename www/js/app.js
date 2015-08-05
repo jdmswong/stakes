@@ -40,7 +40,27 @@ angular.module('stakes', ['ionic', 'stakes.controllers', 'stakes.services'])
 		url: '/event',
 		views: {
 			'event': {
-				templateUrl: 'templates/eventDash.html',
+				templateUrl: 'templates/eventTab.html',
+				abstract: true
+			}
+		}
+	})
+	
+	.state('tab.event.notifications',{
+		url: '/notifications',
+		views: {
+			'notifications': {
+				templateUrl: 'templates/notifications.html',
+				controller: 'EventCtrl'
+			}
+		}
+	})
+	
+	.state('tab.event.chat',{
+		url: '/chat',
+		views: {
+			'chat': {
+				templateUrl: 'templates/chat.html',
 				controller: 'EventCtrl'
 			}
 		}
@@ -111,7 +131,7 @@ angular.module('stakes', ['ionic', 'stakes.controllers', 'stakes.services'])
 	;
 	
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/event');
+  $urlRouterProvider.otherwise('/tab/event/notifications');
 
 })
 

@@ -1,0 +1,35 @@
+<ion-view view-title="Chats">
+	<ion-content>
+		<div class="list">
+			<ion-item 
+				ng-class="notification.type === 'chat' ? 'item-avatar' : '' " 
+				class="item-text-wrap" 
+				ng-repeat="notification in notifications"
+			>
+				<img 
+					ng-if="notification.type === 'chat' " 
+					ng-src="{{notification.from.face}}" 
+				  ui-sref="tab.event-person-detail({ attendeeId: notification.from.attendeeId })"
+				/>
+				{{ notification.message }}
+			</ion-item>
+		</div>
+		
+	</ion-content>
+	
+	<ion-footer-bar class="bar-dark msg-bar">
+		<label class="item item-input">
+			<input 
+				type="text" 
+				placeholder="Send a message!" 
+				ng-model="msgText" 
+				ng-keydown="onKeyDown($event)"
+			>
+		</label>
+		<div class="buttons">
+			<button class="button button-clear" ng-click="submitMsg()">
+				<i class="icon ion-chatbox"></i>
+			</button>
+		</div>
+	</ion-footer-bar>
+</ion-view>
