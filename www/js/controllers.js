@@ -6,7 +6,19 @@ angular.module('stakes.controllers', ['ionic.rating'])
 	
 })
 
-.controller('EventCtrl', function($scope, Notifications, User) {
+.controller('EventCtrl', function($scope, $ionicModal, Notifications, User, Attendees) {
+	
+	// Modal code
+	$ionicModal.fromTemplateUrl('templates/registerModal.html', {
+		scope: $scope
+	}).then(function(modal){
+		$scope.modal = modal;
+	});
+	$scope.register = function(params){
+		User.setUser( Attendees.register(params) );
+		$scope.modal.hide();
+	}
+	
 	
 	
 	$scope.notifications = Notifications.all();
@@ -16,7 +28,7 @@ angular.module('stakes.controllers', ['ionic.rating'])
 			Notifications.pushMsg( $scope.msgText, User.getUserId() );
 			$scope.msgText = '';
 		}else{
-			
+			$scope.modal.show();
 		}
 	};
 	$scope.onKeyDown = function(event){

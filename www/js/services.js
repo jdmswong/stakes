@@ -3,9 +3,8 @@ angular.module('stakes.services', [])
 .factory('User', function(Attendees){
 	var user = {};
 	
-	var setUser = function(name, company, position, email, phone){
-		user = Attendees.register(name, company, position, email, phone);
-		
+	var setUser = function(userObj){
+		user = userObj;
 	};
 	
 	var loggedIn = function(){
@@ -152,7 +151,9 @@ angular.module('stakes.services', [])
 	];
 	
 	// Adds new attendee to list of attendees, returns new attendee object
-	var registerAttendee = function(name, company, position, email, phone){
+	// params = { name, company, position, email, phone }
+	var registerAttendee = function(params){
+		
 		
 		var newId = createFreshId();
 		
@@ -161,11 +162,11 @@ angular.module('stakes.services', [])
 		
 		var newAttendee = {
 			id: newId,
-			name: name,
-			company: company,
-			position: position,
-			email: email,
-			phone: phone,
+			name: params.name,
+			company: params.company,
+			position: params.position,
+			email: params.email,
+			phone: params.phone,
 			face: faceURI
 		};
 		
