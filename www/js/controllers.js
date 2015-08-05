@@ -60,10 +60,6 @@ angular.module('stakes.controllers', ['ionic.rating'])
 	
 	$scope.attendees = Attendees.all();
 	
-	$scope.register = function(){
-		
-		Attendees.register( 'TESTMAN', 'TEST COMPANY', 'KING OF THE LAND', 'lol@asdf.com', '123-456-7890' );
-	};
 	
 	
 })

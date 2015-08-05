@@ -1,22 +1,17 @@
 angular.module('stakes.services', [])
 
-.factory('Roles', function(){
-	var role = undefined;
+.factory('User', function(Attendees){
+	var user = {};
+	
+	var setUser = function(name, company, position, email, phone){
+		user = Attendees.register(name, company, position, email, phone);
+		
+	};
+	
 	return {
-		getRole: function(){
-			return role;
-		},
-		setRole: function(newRole){
-			if( 
-				newRole === 'entrant' ||
-				newRole === 'judge' ||
-				newRole === 'audience'
-			){
-				role = newRole;
-				return role;
-			} else {
-				return -1;
-			}
+		setUser: setUser,
+		getUser: function(){
+			return user;
 		}
 	};
 })
@@ -117,7 +112,7 @@ angular.module('stakes.services', [])
 			email: 'hypetechio@gmail.com',
 			phone: '123-456-7890',
 			face: 'https://avatars1.githubusercontent.com/u/1606037?v=3&s=400'
-		}/*, {
+		}, {
 			id: 3,
 			name: 'Adam Bradley',
 			company: 'Ionic',
@@ -141,12 +136,13 @@ angular.module('stakes.services', [])
 			email: 'asdlf@gnsd.com',
 			phone: '123-456-7890',
 			face: 'https://avatars2.githubusercontent.com/u/1720477?v=3&s=400'
-		}*/
+		}
 	];
 	
-var registerAttendee = function(name, company, position, email, phone){
+	// Adds new attendee to list of attendees, returns new attendee object
+	var registerAttendee = function(name, company, position, email, phone){
 		
-		var newId = attendees[attendees.length-1].id + 1;
+		var newId = createFreshId();
 		
 		// Default to placeholder
 		var faceURI = 'img/ProfilePlaceholderSuit.png';
@@ -163,13 +159,19 @@ var registerAttendee = function(name, company, position, email, phone){
 		
 		attendees.push( newAttendee );
 		
+		return newAttendee;
 	};
 	
+	var createFreshId = function(){
+		return attendees[attendees.length-1].id + 1;
+	};
 	
 	return {
+		
 		all: function(){
 			return attendees;
 		},
+		
 		getAttendee: function(attendeeId){
 			for( var i=0; i < attendees.length; i++){
 				if( attendees[i].id === parseInt(attendeeId) ){
@@ -177,7 +179,10 @@ var registerAttendee = function(name, company, position, email, phone){
 				}
 			}
 		},
-		register: registerAttendee
+		
+		register: registerAttendee,
+		
+		getFreshId: createFreshId
 	}
 })
 

@@ -109,8 +109,9 @@ angular.module('stakes', ['ionic', 'stakes.controllers', 'stakes.services'])
 	})
 	
 	;
+	
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/roleselect');
+  $urlRouterProvider.otherwise('/event');
 
 })
 
