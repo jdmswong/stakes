@@ -22,13 +22,6 @@ angular.module('stakes', ['ionic', 'stakes.controllers', 'stakes.services'])
 
   $stateProvider
 
-	// Role selection
-	.state('roleSelect',{
-		url: '/roleselect',
-		templateUrl: 'templates/roleSelect.html',
-		controller: 'RoleSelectCtrl'
-	})
-	
 	.state('menu',{
 		url: '/menu',
 		abstract: true,

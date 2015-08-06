@@ -1,11 +1,5 @@
 angular.module('stakes.controllers', ['ionic.rating'])
 
-.controller('RoleSelectCtrl', function($scope) {
-	
-	
-	
-})
-
 .controller('ChatCtrl', function($scope, $ionicModal, User, Chat, Attendees) {
 	
 	// Modal code
