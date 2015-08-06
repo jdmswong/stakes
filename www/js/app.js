@@ -48,6 +48,16 @@ angular.module('stakes', ['ionic', 'stakes.controllers', 'stakes.services'])
 		}
 	})
 	
+	.state('menu.sender-detail', {
+		url: '/sender/:attendeeId',
+		views: {
+			'menu': {
+				templateUrl: 'templates/attendeeDetail.html',
+				controller: 'AttendeeDetailCtrl'
+			}
+		}
+	})
+	
 	// Event tabs
 	.state('menu.eTab', {
 		url: '/eTab',

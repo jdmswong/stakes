@@ -1,6 +1,6 @@
 angular.module('stakes.controllers', ['ionic.rating'])
 
-.controller('ChatCtrl', function($scope, $ionicModal, User, Chat, Attendees) {
+.controller('ChatCtrl', function($scope, $ionicModal, $location, $anchorScroll, User, Chat, Attendees) {
 	
 	// Modal code
 	$ionicModal.fromTemplateUrl('templates/registerModal.html', {
@@ -17,12 +17,24 @@ angular.module('stakes.controllers', ['ionic.rating'])
 	$scope.chats = Chat.all();
 	
 	$scope.submitMsg = function(){
+		
+		// Close the keyboard - NOT WORKING
+		if(window.cordova && window.cordova.plugins.Keyboard) {
+      cordova.plugins.Keyboard.close();
+    }
+		
+		// Push message
 		if( User.loggedIn() ){
 			Chat.pushMsg( $scope.msgText, User.getUserId() );
 			$scope.msgText = '';
 		}else{
 			$scope.modal.show();
 		}
+		
+		// Scroll to bottom - NOT WORKING
+		$location.hash('bottom');
+		$anchorScroll();
+    
 	};
 	$scope.onKeyDown = function(event){
 		// On enter
