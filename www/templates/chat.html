@@ -2,16 +2,14 @@
 	<ion-content class="has-tabs-top">
 		<div class="list">
 			<ion-item 
-				ng-class="notification.type === 'chat' ? 'item-avatar' : '' " 
-				class="item-text-wrap" 
-				ng-repeat="notification in notifications"
+				class="item-text-wrap item-avatar" 
+				ng-repeat="chatMsg in chats"
 			>
 				<img 
-					ng-if="notification.type === 'chat' " 
-					ng-src="{{notification.from.face}}" 
-				  ui-sref="tab.event-person-detail({ attendeeId: notification.from.attendeeId })"
+					ng-src="{{chatMsg.from.face}}" 
+				  ui-sref="tab.event-person-detail({ attendeeId: chatMsg.from.attendeeId })"
 				/>
-				{{ notification.message }}
+				{{ chatMsg.message }}
 			</ion-item>
 		</div>
 		

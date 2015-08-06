@@ -6,7 +6,7 @@ angular.module('stakes.controllers', ['ionic.rating'])
 	
 })
 
-.controller('EventCtrl', function($scope, $ionicModal, Notifications, User, Attendees) {
+.controller('ChatCtrl', function($scope, $ionicModal, User, Chat, Attendees) {
 	
 	// Modal code
 	$ionicModal.fromTemplateUrl('templates/registerModal.html', {
@@ -20,12 +20,11 @@ angular.module('stakes.controllers', ['ionic.rating'])
 	}
 	
 	
-	
-	$scope.notifications = Notifications.all();
+	$scope.chats = Chat.all();
 	
 	$scope.submitMsg = function(){
 		if( User.loggedIn() ){
-			Notifications.pushMsg( $scope.msgText, User.getUserId() );
+			Chat.pushMsg( $scope.msgText, User.getUserId() );
 			$scope.msgText = '';
 		}else{
 			$scope.modal.show();
@@ -37,6 +36,10 @@ angular.module('stakes.controllers', ['ionic.rating'])
 			$scope.submitMsg();
 	};
 	
+})
+
+.controller('NotificationsCtrl', function($scope, Notifications){
+	$scope.notifications = Notifications.all();
 })
 
 .controller('EntrantsCtrl', function($scope, Entrants, Attendees) {

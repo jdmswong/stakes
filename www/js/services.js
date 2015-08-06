@@ -27,11 +27,34 @@ angular.module('stakes.services', [])
 	};
 })
 
-.factory('Notifications', function(Attendees){
+.factory('Notifications', function(){
+	
+  // Some fake testing data
+	var notifications = [
+		{
+			id: 1,
+			message: "New startup: 'Fun tracker!'", 
+			timestamp: 12368
+		}, {
+			id: 2,
+			type: 'notification', 
+			message: "New startup: 'Workout scheduler'", 
+			timestamp: 12391
+		}
+	];
+	
+	return {
+		all: function(){
+			return notifications;
+		}
+	};
+})
+
+.factory('Chat', function(Attendees){
 	// Might use a resource here that returns a JSON array
 
   // Some fake testing data
-	var notifications = [
+	var chatMsgs = [
 		{
 			id: 1,
 			type: 'chat', 
@@ -53,11 +76,6 @@ angular.module('stakes.services', [])
 			timestamp: 12360
 		}, {
 			id: 3,
-			type: 'notification', 
-			message: "New startup: 'Fun tracker!'", 
-			timestamp: 12368
-		}, {
-			id: 4,
 			type: 'chat', 
 			from: {
 				attendeeId: 3,
@@ -65,16 +83,11 @@ angular.module('stakes.services', [])
 			}, 
 			message: "Who wants to get food?", 
 			timestamp: 12379
-		}, {
-			id: 5,
-			type: 'notification', 
-			message: "New startup: 'Workout scheduler'", 
-			timestamp: 12391
 		}
 	];
 	
 	var constructMsg = function(newMsg, userId){
-		var newId = notifications[length-1] + 1;
+		var newId = chatMsgs[length-1] + 1;
 		
 		var user = Attendees.getAttendee(userId);
 		
@@ -92,13 +105,13 @@ angular.module('stakes.services', [])
 	
 	return {
 		all: function(){
-			return notifications;
+			return chatMsgs;
 		},
 		pushMsg: function(newMsg, userId){
 			if( newMsg === undefined || newMsg.length <= 0 )
 				return;
 			var result = constructMsg(newMsg, userId);
-			notifications.push(result);
+			chatMsgs.push(result);
 		}
 	};
 	

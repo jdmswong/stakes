@@ -51,7 +51,7 @@ angular.module('stakes', ['ionic', 'stakes.controllers', 'stakes.services'])
 		views: {
 			'event-sub': {
 				templateUrl: 'templates/notifications.html',
-				controller: 'EventCtrl'
+				controller: 'NotificationsCtrl'
 			}
 		}
 	})
@@ -61,7 +61,7 @@ angular.module('stakes', ['ionic', 'stakes.controllers', 'stakes.services'])
 		views: {
 			'event-sub': {
 				templateUrl: 'templates/chat.html',
-				controller: 'EventCtrl'
+				controller: 'ChatCtrl'
 			}
 		}
 	})
