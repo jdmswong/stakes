@@ -28,6 +28,26 @@ angular.module('stakes', ['ionic', 'stakes.controllers', 'stakes.services'])
 		templateUrl: 'templates/sidemenu.html'
 	})
 	
+	.state('menu.notifications', {
+		url: '/notifications',
+		views: {
+			'menu': {
+				templateUrl: 'templates/notifications.html',
+				controller: 'NotificationsCtrl'
+			}
+		}
+	})
+	
+	.state('menu.chat', {
+		url: '/chat',
+		views: {
+			'menu': {
+				templateUrl: 'templates/chat.html',
+				controller: 'ChatCtrl'
+			}
+		}
+	})
+	
 	// Event tabs
 	.state('menu.eTab', {
 		url: '/eTab',
