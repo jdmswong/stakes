@@ -28,48 +28,19 @@ angular.module('stakes', ['ionic', 'stakes.controllers', 'stakes.services'])
 		templateUrl: 'templates/sidemenu.html'
 	})
 	
-	.state('menu.tab', {
-		url: '/tab',
+	// Event tabs
+	.state('menu.eTab', {
+		url: '/eTab',
 		abstract: true,
 		views: {
 			'menu': {
-				templateUrl: 'templates/tab.html'
+				templateUrl: 'templates/eTab.html'
 			}
 		}
  	})
 	
-	// Event tab
-	.state('menu.tab.event',{
-		url: '/event',
-		views: {
-			'event': {
-				templateUrl: 'templates/eventTab.html',
-				abstract: true
-			}
-		}
-	})
 	
-	.state('menu.tab.event.notifications',{
-		url: '/notifications',
-		views: {
-			'event-sub': {
-				templateUrl: 'templates/notifications.html',
-				controller: 'NotificationsCtrl'
-			}
-		}
-	})
-	
-	.state('menu.tab.event.chat',{
-		url: '/chat',
-		views: {
-			'event-sub': {
-				templateUrl: 'templates/chat.html',
-				controller: 'ChatCtrl'
-			}
-		}
-	})
-	
-	.state('menu.tab.event-person-detail', {
+	.state('menu.eTab.event-person-detail', {
 		url: '/event/person/:attendeeId',
 		views: {
 			'event': {
@@ -80,7 +51,7 @@ angular.module('stakes', ['ionic', 'stakes.controllers', 'stakes.services'])
 	})
 	
 	// Entrants tab
-	.state('menu.tab.entrants',{
+	.state('menu.eTab.entrants',{
 		url: '/entrants',
 		views: {
 			'entrants': {
@@ -90,7 +61,7 @@ angular.module('stakes', ['ionic', 'stakes.controllers', 'stakes.services'])
 		}
 	})
 	
-	.state('menu.tab.rep-detail',{
+	.state('menu.eTab.rep-detail',{
 		url: '/entrants/rep/:attendeeId',
 		views: {
 			'entrants': {
@@ -100,7 +71,7 @@ angular.module('stakes', ['ionic', 'stakes.controllers', 'stakes.services'])
 		}
 	})
 	
-	.state('menu.tab.entrant-detail',{
+	.state('menu.eTab.entrant-detail',{
 		url: '/entrants/:entrantId',
 		views: {
 			'entrants': {
@@ -111,7 +82,7 @@ angular.module('stakes', ['ionic', 'stakes.controllers', 'stakes.services'])
 	})
 	
 	// Attendees tab
-	.state('menu.tab.attendees',{
+	.state('menu.eTab.attendees',{
 		url: '/attendees',
 		views: {
 			'attendees': {
@@ -121,7 +92,7 @@ angular.module('stakes', ['ionic', 'stakes.controllers', 'stakes.services'])
 		}
 	})
 	
-	.state('menu.tab.attendee-detail',{
+	.state('menu.eTab.attendee-detail',{
 		url: '/attendees/:attendeeId',
 		views: {
 			'attendees': {
@@ -134,7 +105,7 @@ angular.module('stakes', ['ionic', 'stakes.controllers', 'stakes.services'])
 	;
 	
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/menu/tab/event/notifications');
+  $urlRouterProvider.otherwise('/menu/eTab/attendees');
 
 })
 
