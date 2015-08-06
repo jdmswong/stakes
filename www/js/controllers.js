@@ -1,6 +1,6 @@
 angular.module('stakes.controllers', ['ionic.rating'])
 
-.controller('ChatCtrl', function($scope, $ionicModal, $location, $anchorScroll, User, Chat, Attendees) {
+.controller('ChatCtrl', function($scope, $ionicModal, $ionicScrollDelegate, User, Chat, Attendees) {
 	
 	// Modal code
 	$ionicModal.fromTemplateUrl('templates/registerModal.html', {
@@ -31,9 +31,8 @@ angular.module('stakes.controllers', ['ionic.rating'])
 			$scope.modal.show();
 		}
 		
-		// Scroll to bottom - NOT WORKING
-		$location.hash('bottom');
-		$anchorScroll();
+		// Scroll to bottom
+		$ionicScrollDelegate.scrollBottom();
     
 	};
 	$scope.onKeyDown = function(event){
