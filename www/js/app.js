@@ -22,6 +22,12 @@ angular.module('stakes', ['ionic', 'stakes.controllers', 'stakes.services'])
 
   $stateProvider
 
+	.state('login',{
+		url: '/login',
+		templateUrl: 'templates/login.html'
+//		controller: 'LoginCtrl'
+	})
+	
 	.state('menu',{
 		url: '/menu',
 		abstract: true,
@@ -135,7 +141,7 @@ angular.module('stakes', ['ionic', 'stakes.controllers', 'stakes.services'])
 	;
 	
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/menu/eTab/attendees');
+  $urlRouterProvider.otherwise('/login');
 
 })
 
