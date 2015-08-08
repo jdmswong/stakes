@@ -7,12 +7,22 @@ angular.module('stakes.services', [])
 		user = userObj;
 	};
 	
+	var setUserById = function(attendeeId){
+		user = Attendees.getAttendee(attendeeId);
+		if(user){
+			return true;
+		}else{
+			return false;
+		}
+	};
+	
 	var loggedIn = function(){
 		return typeof(user.id) != "undefined";
 	};
 	
 	return {
 		setUser: setUser,
+		setUserById: setUserById,
 		getUser: function(){
 			return user;
 		},

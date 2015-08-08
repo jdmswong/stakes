@@ -1,15 +1,19 @@
 <ion-view title="Log in">	
 	<ion-content class="padding">
+		<div 
+			class="error" 
+			ng-style="{display: assertLoginError ? 'inherit' : 'none'}"
+	 	>Invalid username and/or password</div>
 		<div class="list">
 			<label class="item item-input">
 				<span class="input-label">Username</span>
-				<input ng-model="user.username" type="text">
+				<input ng-model="loginData.username" type="text">
 			</label>
 			<label class="item item-input">
 				<span class="input-label">Password</span>
-				<input ng-model="user.email" type="password">
+				<input ng-model="loginData.email" type="password">
 			</label>
-			<button class="button button-full button-dark" ng-click="register(newUser)">Log in</button>
+			<button class="button button-full button-dark" ng-click="login()">Log in</button>
 		</div>
 	</ion-content>
 </ion-view>

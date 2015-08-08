@@ -24,8 +24,8 @@ angular.module('stakes', ['ionic', 'stakes.controllers', 'stakes.services'])
 
 	.state('login',{
 		url: '/login',
-		templateUrl: 'templates/login.html'
-//		controller: 'LoginCtrl'
+		templateUrl: 'templates/login.html',
+		controller: 'LoginCtrl'
 	})
 	
 	.state('menu',{

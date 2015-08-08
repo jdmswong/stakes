@@ -1,5 +1,27 @@
 angular.module('stakes.controllers', ['ionic.rating'])
 
+.controller('LoginCtrl', function($scope, $state, User){
+	
+	// Login data bound to form
+	// Login currently hard coded, not used
+	$scope.loginData = {};
+	
+	// Show the error message
+	$scope.assertLoginError = false;
+	
+	$scope.login = function(){
+		// hard coded to specific user, JD
+		var userId = 1;
+		
+		if(User.setUserById(userId)){
+			$state.go('menu.notifications');
+		}else{
+			$scope.assertLoginError = true;
+		}
+	}
+	
+})
+
 .controller('ChatCtrl', function($scope, $ionicModal, $ionicScrollDelegate, User, Chat, Attendees) {
 	
 	// Modal code
