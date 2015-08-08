@@ -22,20 +22,14 @@ angular.module('stakes.controllers', [])
 	
 })
 
-.controller('ChatCtrl', function($scope, $ionicModal, $ionicScrollDelegate, User, Chat, Attendees) {
+.controller('ChatCtrl', function($scope, $ionicScrollDelegate, $state, User, Chat, Attendees) {
 	
-	// Modal code
-	$ionicModal.fromTemplateUrl('templates/registerModal.html', {
-		scope: $scope
-	}).then(function(modal){
-		$scope.modal = modal;
+	// On page load:
+	$scope.$on('$ionicView.enter', function(e) {
+		// TODO: refresh chats here //
+		$ionicScrollDelegate.scrollBottom();
 	});
-	$scope.register = function(params){
-		User.setUser( Attendees.register(params) );
-		$scope.modal.hide();
-	}
-	
-	
+
 	$scope.chats = Chat.all();
 	
 	$scope.submitMsg = function(){
@@ -50,7 +44,7 @@ angular.module('stakes.controllers', [])
 			Chat.pushMsg( $scope.msgText, User.getUserId() );
 			$scope.msgText = '';
 		}else{
-			$scope.modal.show();
+			$state.go('login');
 		}
 		
 		// Scroll to bottom
