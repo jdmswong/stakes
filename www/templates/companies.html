@@ -1,24 +1,24 @@
-<ion-view view-title="Entrants">
+<ion-view view-title="Companies">
 	<ion-content>
 		<div 
 			class="list card" 
-			ng-repeat="entrant in entrants"
-			ui-sref="menu.eTab.entrant-detail({ entrantId:entrant.id })"
+			ng-repeat="company in companies"
+			ui-sref="menu.eTab.company-detail({ companyId:company.id })"
 		>
 			
 			<div class="item">
-				<h2>{{ entrant.name }}</h2>
+				<h2>{{ company.name }}</h2>
 			</div>
 			
 			<div class="item avatar-set item-text-wrap">
 				<img 
-					ng-repeat="rep in getReps(entrant)" 
+					ng-repeat="rep in getReps(company)" 
 					ng-src="{{ rep.face }}"
 				/>
 			</div>
 			
 			<div class="item item-body">
-				<p>{{ entrant.premise }}</p>
+				<p>{{ company.premise }}</p>
 			</div>
 			
 		</div>

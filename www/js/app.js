@@ -86,33 +86,33 @@ angular.module('stakes', ['ionic', 'stakes.controllers', 'stakes.services'])
 		}
 	})
 	
-	// Entrants tab
-	.state('menu.eTab.entrants',{
-		url: '/entrants',
+	// Companies tab
+	.state('menu.eTab.companies',{
+		url: '/companies',
 		views: {
-			'entrants': {
-				templateUrl: 'templates/entrants.html',
-				controller: 'EntrantsCtrl'
+			'companies': {
+				templateUrl: 'templates/companies.html',
+				controller: 'CompaniesCtrl'
+			}
+		}
+	})
+	
+	.state('menu.eTab.company-detail',{
+		url: '/companies/:companyId',
+		views: {
+			'companies': {
+				templateUrl: 'templates/companyDetail.html',
+				controller: 'CompanyDetailCtrl'
 			}
 		}
 	})
 	
 	.state('menu.eTab.rep-detail',{
-		url: '/entrants/rep/:attendeeId',
+		url: '/companies/rep/:attendeeId',
 		views: {
-			'entrants': {
+			'companies': {
 				templateUrl: 'templates/attendeeDetail.html',
 				controller: 'AttendeeDetailCtrl'
-			}
-		}
-	})
-	
-	.state('menu.eTab.entrant-detail',{
-		url: '/entrants/:entrantId',
-		views: {
-			'entrants': {
-				templateUrl: 'templates/entrantDetail.html',
-				controller: 'EntrantDetailCtrl'
 			}
 		}
 	})

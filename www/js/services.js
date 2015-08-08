@@ -222,9 +222,9 @@ angular.module('stakes.services', [])
 	}
 })
 
-.factory( 'Entrants', function(){
+.factory( 'Companies', function(){
 	
-	var entrants = [
+	var companies = [
 		{
 			id: 1,
 			name: 'Stakes',
@@ -254,12 +254,12 @@ angular.module('stakes.services', [])
 	
 	return {
 		all: function(){
-			return entrants;
+			return companies;
 		},
-		getEntrant: function(entrantId) {
-			for( var i=0; i < entrants.length; i++){
-				if( entrants[i].id === parseInt(entrantId) ){
-					return entrants[i];
+		getCompany: function(companyId) {
+			for( var i=0; i < companies.length; i++){
+				if( companies[i].id === parseInt(companyId) ){
+					return companies[i];
 				}
 			}
 		}

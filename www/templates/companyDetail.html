@@ -1,9 +1,9 @@
-<ion-view view-title="{{ entrant.name }}">
+<ion-view view-title="{{ company.name }}">
 	<ion-content>
 		<div class="card">
 			<ion-item class="item-text-wrap avatar-set">
 				<img 
-					ng-repeat="rep in getReps(entrant)" 
+					ng-repeat="rep in getReps(company)" 
 					ng-src="{{ rep.face }}" 
 					ui-sref="menu.eTab.rep-detail({ attendeeId: rep.id })"
 				/>
@@ -13,10 +13,10 @@
 				<rating ng-model="rate" max="max" readonly="readOnly"></rating>
 			</ion-item>
 			<ion-item>
-				{{ entrant.premise }}
+				{{ company.premise }}
 			</ion-item>
 			<ion-item class="item-body">
-				{{ entrant.pitch }}
+				{{ company.pitch }}
 			</ion-item>
 				
 		</div>

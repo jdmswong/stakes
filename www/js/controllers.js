@@ -69,26 +69,26 @@ angular.module('stakes.controllers', ['ionic.rating'])
 	$scope.notifications = Notifications.all();
 })
 
-.controller('EntrantsCtrl', function($scope, Entrants, Attendees) {
+.controller('CompaniesCtrl', function($scope, Companies, Attendees) {
 	
-	$scope.entrants = Entrants.all();
-	$scope.getReps = function(entrant){
+	$scope.companies = Companies.all();
+	$scope.getReps = function(company){
 		var result = [];
-		for( var i=0; i < entrant.reps.length; i++){
-			result.push( Attendees.getAttendee(entrant.reps[i]) );
+		for( var i=0; i < company.reps.length; i++){
+			result.push( Attendees.getAttendee(company.reps[i]) );
 		}
 		return result;
 	};
 	
 })
 
-.controller('EntrantDetailCtrl', function($scope, $stateParams, Entrants, Attendees){
+.controller('CompanyDetailCtrl', function($scope, $stateParams, Companies, Attendees){
 	
-	$scope.entrant = Entrants.getEntrant($stateParams.entrantId);
+	$scope.company = Companies.getCompany($stateParams.companyId);
 	$scope.getReps = function(){
 		var result = [];
-		for( var i=0; i < $scope.entrant.reps.length; i++){
-			result.push( Attendees.getAttendee($scope.entrant.reps[i]) );
+		for( var i=0; i < $scope.company.reps.length; i++){
+			result.push( Attendees.getAttendee($scope.company.reps[i]) );
 		}
 		return result;
 	};
