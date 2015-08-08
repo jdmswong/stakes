@@ -9,7 +9,8 @@
 					ng-src="{{chatMsg.from.face}}" 
 				  ui-sref="menu.sender-detail({ attendeeId: chatMsg.from.attendeeId })"
 				/>
-				{{ chatMsg.message }}
+				<h2>{{ chatMsg.from.name }}</h2>
+				<p>{{ chatMsg.message }}</p>
 			</ion-item>
 		</div>
 		
@@ -22,7 +23,7 @@
 				placeholder="Send a message!" 
 				ng-model="msgText" 
 				ng-keydown="onKeyDown($event)"
-			>
+			/>
 		</label>
 		<div class="buttons">
 			<button class="button button-clear" ng-click="submitMsg()">

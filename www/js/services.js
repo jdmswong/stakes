@@ -71,6 +71,7 @@ angular.module('stakes.services', [])
 			message: "Hi everybody!", 
 			from: { 
 				attendeeId: 1, 
+				name: 'JD Wong',
 				face: 'https://avatars3.githubusercontent.com/u/782984?v=3&s=460'
 			},
 			timestamp: 12345
@@ -80,6 +81,7 @@ angular.module('stakes.services', [])
 			type: 'chat', 
 			from: {
 				attendeeId: 4,
+				name: 'Ben Sperry',
 				face: 'https://avatars3.githubusercontent.com/u/519526?v=3&s=400'
 			}, 
 			message: "Hi there!", 
@@ -89,6 +91,7 @@ angular.module('stakes.services', [])
 			type: 'chat', 
 			from: {
 				attendeeId: 3,
+				name: 'Adam Bradley',
 				face: 'https://avatars0.githubusercontent.com/u/452425?v=3&s=400'
 			}, 
 			message: "Who wants to get food?", 
@@ -106,6 +109,7 @@ angular.module('stakes.services', [])
 			type: 'chat',
 			from: {
 				attendeeId: user.id,
+				name: user.name,
 				face: user.face
 			},
 			message: newMsg
