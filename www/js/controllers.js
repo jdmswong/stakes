@@ -1,4 +1,4 @@
-angular.module('stakes.controllers', ['ionic.rating'])
+angular.module('stakes.controllers', [])
 
 .controller('LoginCtrl', function($scope, $state, User){
 	
@@ -93,10 +93,6 @@ angular.module('stakes.controllers', ['ionic.rating'])
 		return result;
 	};
 	
-	// For ionic star rating
-	$scope.rate = 3;
-	$scope.max = 5;
-	$scope.readOnly = false;
 	
 })
 
