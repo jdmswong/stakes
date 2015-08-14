@@ -1,6 +1,6 @@
 angular.module('monarch')
 
-.controller('LoginCtrl', function($scope, $state, User){
+.controller('LoginCtrl', function($scope, $state, $ionicModal, User){
 	
 	// Login data bound to form
 	// Login currently hard coded, not used
@@ -19,6 +19,13 @@ angular.module('monarch')
 			$scope.assertLoginError = true;
 		}
 	}
+	
+	$ionicModal.fromTemplateUrl('client/templates/createUser.ng.html', function($ionicModal) {
+        $scope.modal = $ionicModal;
+	}, {
+			scope: $scope,
+			animation: 'slide-in-up'
+	});  
 	
 })
 
