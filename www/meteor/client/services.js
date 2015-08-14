@@ -60,44 +60,10 @@ angular.module('monarch')
 	};
 })
 
-.factory('Chat', function(Attendees){
-	// Might use a resource here that returns a JSON array
-
-  // Some fake testing data
-	var chatMsgs = [
-		{
-			id: 1,
-			type: 'chat', 
-			message: "Hi everybody!", 
-			from: { 
-				attendeeId: 1, 
-				name: 'JD Wong',
-				face: 'https://avatars3.githubusercontent.com/u/782984?v=3&s=460'
-			},
-			timestamp: 12345
-		}
-		, {
-			id: 2,
-			type: 'chat', 
-			from: {
-				attendeeId: 4,
-				name: 'Ben Sperry',
-				face: 'https://avatars3.githubusercontent.com/u/519526?v=3&s=400'
-			}, 
-			message: "Hi there!", 
-			timestamp: 12360
-		}, {
-			id: 3,
-			type: 'chat', 
-			from: {
-				attendeeId: 3,
-				name: 'Adam Bradley',
-				face: 'https://avatars0.githubusercontent.com/u/452425?v=3&s=400'
-			}, 
-			message: "Who wants to get food?", 
-			timestamp: 12379
-		}
-	];
+.factory('Chat', function(Attendees, $meteor){
+	
+	// Assign meteor collection
+	var chatMsgs = $meteor.collection(Chats);
 	
 	var constructMsg = function(newMsg, userId){
 		var newId = chatMsgs[length-1] + 1;
