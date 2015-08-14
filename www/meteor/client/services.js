@@ -1,4 +1,4 @@
-angular.module('stakes.services', [])
+angular.module('monarch')
 
 .factory('User', function(Attendees){
 	var user = {};

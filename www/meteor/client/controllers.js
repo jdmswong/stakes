@@ -1,4 +1,4 @@
-angular.module('stakes.controllers', [])
+angular.module('monarch')
 
 .controller('LoginCtrl', function($scope, $state, User){
 	

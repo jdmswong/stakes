@@ -3,7 +3,7 @@
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
-angular.module('stakes', ['ionic', 'stakes.controllers', 'stakes.services'])
+angular.module('monarch')
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -24,21 +24,21 @@ angular.module('stakes', ['ionic', 'stakes.controllers', 'stakes.services'])
 
 	.state('login',{
 		url: '/login',
-		templateUrl: 'templates/login.html',
+		templateUrl: 'client/templates/login.ng.html',
 		controller: 'LoginCtrl'
 	})
 	
 	.state('menu',{
 		url: '/menu',
 		abstract: true,
-		templateUrl: 'templates/sidemenu.html'
+		templateUrl: 'client/templates/sidemenu.ng.html'
 	})
 	
 	.state('menu.notifications', {
 		url: '/notifications',
 		views: {
 			'menu': {
-				templateUrl: 'templates/notifications.html',
+				templateUrl: 'client/templates/notifications.ng.html',
 				controller: 'NotificationsCtrl'
 			}
 		}
@@ -48,7 +48,7 @@ angular.module('stakes', ['ionic', 'stakes.controllers', 'stakes.services'])
 		url: '/chat',
 		views: {
 			'menu': {
-				templateUrl: 'templates/chat.html',
+				templateUrl: 'client/templates/chat.ng.html',
 				controller: 'ChatCtrl'
 			}
 		}
@@ -58,7 +58,7 @@ angular.module('stakes', ['ionic', 'stakes.controllers', 'stakes.services'])
 		url: '/sender/:attendeeId',
 		views: {
 			'menu': {
-				templateUrl: 'templates/attendeeDetail.html',
+				templateUrl: 'client/templates/attendeeDetail.ng.html',
 				controller: 'AttendeeDetailCtrl'
 			}
 		}
@@ -70,7 +70,7 @@ angular.module('stakes', ['ionic', 'stakes.controllers', 'stakes.services'])
 		abstract: true,
 		views: {
 			'menu': {
-				templateUrl: 'templates/eTab.html'
+				templateUrl: 'client/templates/eTab.ng.html'
 			}
 		}
  	})
@@ -80,7 +80,7 @@ angular.module('stakes', ['ionic', 'stakes.controllers', 'stakes.services'])
 		url: '/event/person/:attendeeId',
 		views: {
 			'event': {
-				templateUrl: 'templates/attendeeDetail.html',
+				templateUrl: 'client/templates/attendeeDetail.ng.html',
 				controller: 'AttendeeDetailCtrl'
 			}
 		}
@@ -91,7 +91,7 @@ angular.module('stakes', ['ionic', 'stakes.controllers', 'stakes.services'])
 		url: '/companies',
 		views: {
 			'companies': {
-				templateUrl: 'templates/companies.html',
+				templateUrl: 'client/templates/companies.ng.html',
 				controller: 'CompaniesCtrl'
 			}
 		}
@@ -101,7 +101,7 @@ angular.module('stakes', ['ionic', 'stakes.controllers', 'stakes.services'])
 		url: '/companies/:companyId',
 		views: {
 			'companies': {
-				templateUrl: 'templates/companyDetail.html',
+				templateUrl: 'client/templates/companyDetail.ng.html',
 				controller: 'CompanyDetailCtrl'
 			}
 		}
@@ -111,7 +111,7 @@ angular.module('stakes', ['ionic', 'stakes.controllers', 'stakes.services'])
 		url: '/companies/rep/:attendeeId',
 		views: {
 			'companies': {
-				templateUrl: 'templates/attendeeDetail.html',
+				templateUrl: 'client/templates/attendeeDetail.ng.html',
 				controller: 'AttendeeDetailCtrl'
 			}
 		}
@@ -122,7 +122,7 @@ angular.module('stakes', ['ionic', 'stakes.controllers', 'stakes.services'])
 		url: '/attendees',
 		views: {
 			'attendees': {
-				templateUrl: 'templates/attendees.html',
+				templateUrl: 'client/templates/attendees.ng.html',
 				controller: 'AttendeesCtrl'
 			}
 		}
@@ -132,7 +132,7 @@ angular.module('stakes', ['ionic', 'stakes.controllers', 'stakes.services'])
 		url: '/attendees/:attendeeId',
 		views: {
 			'attendees': {
-				templateUrl: 'templates/attendeeDetail.html',
+				templateUrl: 'client/templates/attendeeDetail.ng.html',
 				controller: 'AttendeeDetailCtrl'
 			}
 		}
