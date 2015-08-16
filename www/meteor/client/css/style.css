@@ -1,14 +1,3 @@
-.role-select {
-	margin-left: auto;
-	margin-right: auto;
-	margin-top: 20px !important;
-	width: 85% !important;
-}
-
-.role-select:first-of-type {
-	margin-top: 70px !important;
-}
-
 .big-face {
 	margin: 20px;
 	width: 68% !important;
@@ -33,4 +22,9 @@
 	background-color: #FFBABA;
 	text-align: center;
 	display: none;
+}
+
+.header-avatar{
+	border-radius: 50%;
+	height: 30px;
 }

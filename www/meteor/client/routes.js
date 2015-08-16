@@ -31,7 +31,10 @@ angular.module('monarch')
 	.state('menu',{
 		url: '/menu',
 		abstract: true,
-		templateUrl: 'client/templates/sidemenu.ng.html'
+		templateUrl: 'client/templates/sidemenu.ng.html',
+		controller: function($scope){
+			$scope.me = Meteor.user();
+		}
 	})
 	
 	.state('menu.notifications', {
