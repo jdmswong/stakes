@@ -1,42 +1,5 @@
 angular.module('monarch')
 
-.factory('User', function(Attendees){
-	var user = {};
-	
-	var setUser = function(userObj){
-		user = userObj;
-	};
-	
-	var setUserById = function(attendeeId){
-		user = Attendees.getAttendee(attendeeId);
-		if(user){
-			return true;
-		}else{
-			return false;
-		}
-	};
-	
-	var loggedIn = function(){
-		return typeof(user.id) != "undefined";
-	};
-	
-	return {
-		setUser: setUser,
-		setUserById: setUserById,
-		getUser: function(){
-			return user;
-		},
-		getUserId: function(){
-			if( loggedIn() ){
-				return user.id;
-			}else{
-				return undefined;
-			}
-		},
-		loggedIn: loggedIn
-	};
-})
-
 .factory('Notifications', function(){
 	
   // Some fake testing data
@@ -94,7 +57,7 @@ angular.module('monarch')
 	
 })
 
-.factory('Attendees', function(){
+.factory('Attendees', function($meteor){
 	
 	
 //	[
@@ -142,7 +105,7 @@ angular.module('monarch')
 //	];
 	
 	return {
-		all: Meteor.users.find({}).fetch(),
+		all: $meteor.collection(Meteor.users),
 		getAttendee: function(attendeeId){
 			return (Meteor.users.find({_id: attendeeId}).fetch())[0];
 		}

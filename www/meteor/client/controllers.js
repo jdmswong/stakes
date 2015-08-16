@@ -15,7 +15,7 @@ angular.module('monarch')
 	}
 })
 
-.controller('LoginCtrl', function($scope, $state, $ionicModal, User){
+.controller('LoginCtrl', function($scope, $state, $ionicModal){
 	
 	$scope.$on('$ionicView.enter', function(e) {
 		$scope.error = null;
@@ -73,7 +73,7 @@ angular.module('monarch')
 	
 })
 
-.controller('ChatCtrl', function($scope, $ionicScrollDelegate, $state, User, Chat, Attendees) {
+.controller('ChatCtrl', function($scope, $ionicScrollDelegate, $state, Chat, Attendees) {
 	
 	// On page load:
 	$scope.$on('$ionicView.enter', function(e) {
