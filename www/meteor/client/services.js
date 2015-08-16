@@ -150,7 +150,7 @@ angular.module('monarch')
 	return {
 		all: Meteor.users.find({}).fetch(),
 		getAttendee: function(attendeeId){
-			return Meteor.users.find({_id: attendeeId}).fetch();
+			return (Meteor.users.find({_id: attendeeId}).fetch())[0];
 		}
 	}
 })

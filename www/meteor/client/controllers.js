@@ -135,6 +135,7 @@ angular.module('monarch')
 	
 	$scope.attendee = Attendees.getAttendee( $stateParams.attendeeId );
 	
+	
 })
 
 ;
