@@ -4,11 +4,11 @@
 			<ion-item 
 				class = "item-text-wrap item-avatar" 
 				ng-repeat = "attendee in attendees"
-				ui-sref = "menu.eTab.attendee-detail({ attendeeId: attendee.id })"
+				ui-sref = "menu.eTab.attendee-detail({ attendeeId: attendee._id })"
 			>
-				<img ng-src = "{{attendee.face}}" />
-				<h2>{{ attendee.name }}</h2>
-				<p>{{ attendee.company }} - {{ attendee.position }}</p>
+				<img ng-src = "{{attendee.profile.face}}" />
+				<h2>{{ attendee.profile.name }}</h2>
+				<p>{{ attendee.profile.company }} - {{ attendee.profile.position }}</p>
 			</ion-item>
 		</div>
 	</ion-content>

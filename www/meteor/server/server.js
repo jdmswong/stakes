@@ -1,7 +1,7 @@
 Accounts.onCreateUser(function(options, user){
-	// hard code default picture
-	user.face = 'ProfilePlaceholderSuit.png';
 	if (options.profile){
+		// hard code default picture
+		options.profile.face = 'ProfilePlaceholderSuit.png';
 		user.profile = options.profile;
 	}
 	return user;

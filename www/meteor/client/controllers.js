@@ -119,9 +119,9 @@ angular.module('monarch')
 
 .controller('AttendeesCtrl', function($scope, Attendees) {
 	
-	$scope.attendees = Attendees.all();
+	$scope.attendees = Attendees.all;
 	
-	
+	console.log($scope.attendees[0]);
 	
 })
 
