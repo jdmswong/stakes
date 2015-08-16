@@ -20,12 +20,32 @@ angular.module('monarch')
 		}
 	}
 	
-	$ionicModal.fromTemplateUrl('client/templates/createUser.ng.html', function($ionicModal) {
-        $scope.modal = $ionicModal;
+	$scope.newUser = {};
+	$ionicModal.fromTemplateUrl(
+		'client/templates/createUser.ng.html',
+		function($ionicModal) 
+	{
+		$scope.modal = $ionicModal;
 	}, {
-			scope: $scope,
-			animation: 'slide-in-up'
+		scope: $scope,
+		animation: 'slide-in-up'
 	});  
+	
+	$scope.createUser = function(){
+		Accounts.createUser({
+			username: $scope.newUser.username,
+			email: $scope.newUser.email,
+			password: $scope.newUser.password,
+			profile: {
+				name: $scope.newUser.name,
+				company: $scope.newUser.company,
+				position: $scope.newUser.position,
+				phone: $scope.newUser.phone
+			}
+		});		
+		$state.go('menu.eTab.attendees');
+		$scope.modal.hide();
+	}
 	
 })
 
