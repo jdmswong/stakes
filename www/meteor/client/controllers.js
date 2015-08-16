@@ -3,21 +3,28 @@ angular.module('monarch')
 .controller('LoginCtrl', function($scope, $state, $ionicModal, User){
 	
 	// Login data bound to form
-	// Login currently hard coded, not used
 	$scope.loginData = {};
 	
 	// Show the error message
-	$scope.assertLoginError = false;
+	$scope.error = null;
 	
 	$scope.login = function(){
-		// hard coded to specific user, JD
-		var userId = 1;
 		
-		if(User.setUserById(userId)){
-			$state.go('menu.notifications');
-		}else{
-			$scope.assertLoginError = true;
-		}
+		Meteor.loginWithPassword(
+			$scope.loginData.username, 
+			$scope.loginData.password, 
+			function(error){
+				if(typeof error === 'undefined'){
+					//login success
+					$state.go('menu.eTab.attendees');
+				}else{
+					//login failure
+					$scope.error = error;
+				}
+			}
+		);
+		
+		
 	}
 	
 	$scope.newUser = {};
@@ -121,7 +128,6 @@ angular.module('monarch')
 	
 	$scope.attendees = Attendees.all;
 	
-	console.log($scope.attendees[0]);
 	
 })
 
