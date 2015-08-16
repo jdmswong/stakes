@@ -65,18 +65,15 @@ angular.module('monarch')
 	// Assign meteor collection
 	var chatMsgs = $meteor.collection(Chats);
 	
-	var constructMsg = function(newMsg, userId){
-		var newId = chatMsgs[length-1] + 1;
+	var constructMsg = function(newMsg, senderId){
 		
-		var user = Attendees.getAttendee(userId);
+		var sender = Meteor.users.find({_id: senderId}).fetch()[0];
 		
 		var result = {
-			id: newId,
-			type: 'chat',
 			from: {
-				attendeeId: user.id,
-				name: user.name,
-				face: user.face
+				attendeeId: senderId,
+				name: sender.profile.name,
+				face: sender.profile.face
 			},
 			message: newMsg
 		};
@@ -87,10 +84,11 @@ angular.module('monarch')
 		all: function(){
 			return chatMsgs;
 		},
-		pushMsg: function(newMsg, userId){
+		pushMsg: function(newMsg, senderId){
 			if( newMsg === undefined || newMsg.length <= 0 )
 				return;
-			var result = constructMsg(newMsg, userId);
+			var result = constructMsg(newMsg, senderId);
+			console.log(result);
 			chatMsgs.push(result);
 		}
 	};
@@ -143,9 +141,6 @@ angular.module('monarch')
 //			face: 'https://avatars2.githubusercontent.com/u/1720477?v=3&s=400'
 //		}
 //	];
-	
-	// Adds new attendee to list of attendees, returns new attendee object
-	// params = { name, company, position, email, phone }
 	
 	return {
 		all: Meteor.users.find({}).fetch(),

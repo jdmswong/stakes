@@ -60,7 +60,6 @@ angular.module('monarch')
 	
 	// On page load:
 	$scope.$on('$ionicView.enter', function(e) {
-		// TODO: refresh chats here //
 		$ionicScrollDelegate.scrollBottom();
 	});
 
@@ -74,8 +73,8 @@ angular.module('monarch')
     }
 		
 		// Push message
-		if( User.loggedIn() ){
-			Chat.pushMsg( $scope.msgText, User.getUserId() );
+		if( Meteor.user() ){
+			Chat.pushMsg( $scope.msgText, Meteor.userId() );
 			$scope.msgText = '';
 		}else{
 			$state.go('login');
