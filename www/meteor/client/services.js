@@ -88,7 +88,6 @@ angular.module('monarch')
 			if( newMsg === undefined || newMsg.length <= 0 )
 				return;
 			var result = constructMsg(newMsg, senderId);
-			console.log(result);
 			chatMsgs.push(result);
 		}
 	};

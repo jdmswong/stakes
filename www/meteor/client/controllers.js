@@ -1,12 +1,29 @@
 angular.module('monarch')
 
+.controller("MenuCtrl", function($scope, $state){
+	$scope.me = Meteor.user();
+	$scope.logout = function(){
+		Meteor.logout(function(error){
+			if( typeof(error) === "undefined" ){
+				// On success
+				$state.go("login");
+			}else{
+				// On failure
+				console.log("Error: "+error.reason);
+			}
+		});
+	}
+})
+
 .controller('LoginCtrl', function($scope, $state, $ionicModal, User){
+	
+	$scope.$on('$ionicView.enter', function(e) {
+		$scope.error = null;
+  });
 	
 	// Login data bound to form
 	$scope.loginData = {};
 	
-	// Show the error message
-	$scope.error = null;
 	
 	$scope.login = function(){
 		
