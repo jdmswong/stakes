@@ -1,11 +1,13 @@
 angular.module('monarch')
 
-.controller("MenuCtrl", function($scope, $state, $rootScope, $meteor){
+.controller("MenuCtrl", function($scope, $state, $rootScope, $meteor, currentUser){
 	
 	$scope.$on('$ionicView.enter', function(e) {
 		// This is not reactive, focred to requery every state change
 		// fix this later
 		$scope.me = $rootScope.currentUser;
+		
+		console.log(currentUser);
   });
 	
 	$scope.logout = function(){

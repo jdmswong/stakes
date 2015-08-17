@@ -5,7 +5,7 @@
 // the 2nd parameter is an array of 'requires'
 angular.module('monarch')
 
-.run(function($ionicPlatform) {
+.run(function($ionicPlatform, $rootScope, $state) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -16,6 +16,15 @@ angular.module('monarch')
       StatusBar.styleDefault();
     }
   });
+	
+	$rootScope.$on("$stateChangeError", function(event, toState, toParams, fromState, fromParams, error) {
+    // We can catch the error thrown when the $requireUser promise from 
+    // config is rejected and redirect the user back to the login page
+    if (error === "AUTH_REQUIRED") {
+			$state.go('login');
+    }
+  });
+	
 })
 
 .config(function($stateProvider, $urlRouterProvider) {
@@ -32,7 +41,12 @@ angular.module('monarch')
 		url: '/menu',
 		abstract: true,
 		templateUrl: 'client/templates/sidemenu.ng.html',
-		controller: 'MenuCtrl'
+		controller: 'MenuCtrl',
+		resolve: {
+			"currentUser": function($meteor){
+				return $meteor.requireUser();
+			}
+		}
 	})
 	
 	.state('menu.notifications', {
