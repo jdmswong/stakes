@@ -46,7 +46,24 @@ angular.module('monarch')
 		
 	}
 	
-	$scope.newUser = {};
+	// new user code
+	$scope.newUser = { face: 'ProfilePlaceholderSuit.png' };
+	
+	$scope.takePicture = function(){
+		// Define the camera settings
+		var options = {
+			width: 500,
+			height: 500,
+			quality: 100
+		};
+		// Call the camera API
+		$meteor.getPicture(options).then(function(data){
+			$scope.newUser.face = data;
+		},function(error){
+			console.log("Error: "+error);
+		});
+	};
+	
 	$ionicModal.fromTemplateUrl(
 		'client/templates/createUser.ng.html',
 		function($ionicModal) 
@@ -66,7 +83,8 @@ angular.module('monarch')
 				name: $scope.newUser.name,
 				company: $scope.newUser.company,
 				position: $scope.newUser.position,
-				phone: $scope.newUser.phone
+				phone: $scope.newUser.phone, 
+				face: $scope.newUser.face
 			}
 		});		
 		$state.go('menu.eTab.attendees');

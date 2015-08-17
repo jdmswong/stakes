@@ -6,6 +6,18 @@
 	
 	<ion-content class="padding">
 		<div class="list">
+			
+			<div class="item item-image">
+				<img ng-src="{{newUser.face}}" />
+			</div>
+			<button 
+				class="button item button-full button-outline button-dark"
+				ng-click="takePicture()"
+			>
+				Take a picture! 
+				<i class="icon ion-camera"></i>
+			</button>
+			
 			<label class="item item-input">
 				<span class="input-label">Username</span>
 				<input ng-model="newUser.username" type="text"/>
