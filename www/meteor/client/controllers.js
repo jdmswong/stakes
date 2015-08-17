@@ -21,7 +21,48 @@ angular.module('monarch')
 	};
 })
 
-.controller('LoginCtrl', function($scope, $state, $ionicModal, $meteor){
+.controller('CreateUserCtrl', function($scope, $meteor, $state){
+	// Placeholder pic by default
+	$scope.newUser = { face: 'ProfilePlaceholderSuit.png' };
+	
+	$scope.takePicture = function(){
+		// Define the camera settings
+		var options = {
+			width: 500,
+			height: 500,
+			quality: 100
+		};
+		// Call the camera API
+		$meteor.getPicture(options).then(function(data){
+			// Save the picture
+			$scope.newUser.face = data;
+		},function(error){
+			console.log("Error: "+error);
+		});
+	};
+	
+	// Create the user
+	$scope.createUser = function(){
+		Accounts.createUser({
+			username: $scope.newUser.username,
+			email: $scope.newUser.email,
+			password: $scope.newUser.password,
+			profile: {
+				name: $scope.newUser.name,
+				company: $scope.newUser.company,
+				position: $scope.newUser.position,
+				phone: $scope.newUser.phone, 
+				face: $scope.newUser.face
+			}
+		});		
+		// TODO: only change state on successful user creation
+		$state.go('menu.eTab.attendees');
+		
+	}
+	
+})
+
+.controller('LoginCtrl', function($scope, $state, $meteor){
 	
 	$scope.$on('$ionicView.enter', function(e) {
 		$scope.error = null;
@@ -37,9 +78,10 @@ angular.module('monarch')
 			$scope.loginData.username, 
 			$scope.loginData.password).then(function()
 		{
-			//login success
+			// login success
 			$state.go('menu.eTab.attendees');
 		},function(error){
+			// login failure
 			$scope.error = error;
 		});
 		
@@ -47,49 +89,6 @@ angular.module('monarch')
 	}
 	
 	// new user code
-	$scope.newUser = { face: 'ProfilePlaceholderSuit.png' };
-	
-	$scope.takePicture = function(){
-		// Define the camera settings
-		var options = {
-			width: 500,
-			height: 500,
-			quality: 100
-		};
-		// Call the camera API
-		$meteor.getPicture(options).then(function(data){
-			$scope.newUser.face = data;
-		},function(error){
-			console.log("Error: "+error);
-		});
-	};
-	
-	$ionicModal.fromTemplateUrl(
-		'client/templates/createUser.ng.html',
-		function($ionicModal) 
-	{
-		$scope.modal = $ionicModal;
-	}, {
-		scope: $scope,
-		animation: 'slide-in-up'
-	});  
-	
-	$scope.createUser = function(){
-		Accounts.createUser({
-			username: $scope.newUser.username,
-			email: $scope.newUser.email,
-			password: $scope.newUser.password,
-			profile: {
-				name: $scope.newUser.name,
-				company: $scope.newUser.company,
-				position: $scope.newUser.position,
-				phone: $scope.newUser.phone, 
-				face: $scope.newUser.face
-			}
-		});		
-		$state.go('menu.eTab.attendees');
-		$scope.modal.hide();
-	}
 	
 })
 

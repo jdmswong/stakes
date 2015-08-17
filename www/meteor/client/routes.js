@@ -49,6 +49,17 @@ angular.module('monarch')
 		}
 	})
 	
+	.state('menu.createUser', {
+		url: '/createUser',
+		views: {
+			'menu': {
+				templateUrl: 'client/templates/createUser.ng.html',
+				controller: 'CreateUserCtrl'
+			}
+		}
+		
+	})
+	
 	.state('menu.notifications', {
 		url: '/notifications',
 		views: {
