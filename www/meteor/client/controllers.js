@@ -1,21 +1,24 @@
 angular.module('monarch')
 
-.controller("MenuCtrl", function($scope, $state){
-	$scope.me = Meteor.user();
+.controller("MenuCtrl", function($scope, $state, $rootScope, $meteor){
+	
+	$scope.$on('$ionicView.enter', function(e) {
+		// This is not reactive, focred to requery every state change
+		// fix this later
+		$scope.me = $rootScope.currentUser;
+  });
+	
 	$scope.logout = function(){
-		Meteor.logout(function(error){
-			if( typeof(error) === "undefined" ){
-				// On success
-				$state.go("login");
-			}else{
-				// On failure
-				console.log("Error: "+error.reason);
-			}
+		$meteor.logout().then(function(){
+			$state.go("login");
+		}, function(error){
+			// On failure
+			console.log("Error: "+error);
 		});
-	}
+	};
 })
 
-.controller('LoginCtrl', function($scope, $state, $ionicModal){
+.controller('LoginCtrl', function($scope, $state, $ionicModal, $meteor){
 	
 	$scope.$on('$ionicView.enter', function(e) {
 		$scope.error = null;
@@ -27,19 +30,15 @@ angular.module('monarch')
 	
 	$scope.login = function(){
 		
-		Meteor.loginWithPassword(
+		$meteor.loginWithPassword(
 			$scope.loginData.username, 
-			$scope.loginData.password, 
-			function(error){
-				if(typeof error === 'undefined'){
-					//login success
-					$state.go('menu.eTab.attendees');
-				}else{
-					//login failure
-					$scope.error = error;
-				}
-			}
-		);
+			$scope.loginData.password).then(function()
+		{
+			//login success
+			$state.go('menu.eTab.attendees');
+		},function(error){
+			$scope.error = error;
+		});
 		
 		
 	}
