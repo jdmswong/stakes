@@ -6,8 +6,11 @@ angular.module('monarch')
 		// I need a way to reactively track the current user.  The 
 		// resolved currentUser doesn't change on logging out and back
 		// in as someone else.  Current solution degrades performance
-		// find a proper solution later.
-		$scope.me = $rootScope.currentUser;
+		// TODO: find a proper solution later.
+		if($rootScope.currentUser)
+			$scope.me = $rootScope.currentUser;
+		else
+			$scope.logout();
 		
   });
 	
