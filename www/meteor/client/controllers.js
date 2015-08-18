@@ -24,7 +24,7 @@ angular.module('monarch')
 	};
 })
 
-.controller('CreateUserCtrl', function($scope, $meteor, $state){
+.controller('CreateUserCtrl', function($scope, $meteor, $state, $ionicSideMenuDelegate){
 	// Placeholder pic by default
 	$scope.newUser = { face: 'ProfilePlaceholderSuit.png' };
 	
@@ -39,10 +39,48 @@ angular.module('monarch')
 		$meteor.getPicture(options).then(function(data){
 			// Save the picture
 			$scope.newUser.face = data;
+			
 		},function(error){
 			console.log("Error: "+error);
 		});
+		
+			
 	};
+	
+	// Cropping config
+	$scope.cropping = false;
+	
+	var startCropper = function(){
+		$scope.cropping = true;
+		$ionicSideMenuDelegate.canDragContent(false);
+		// Invoke the cropper tool on the preview image	
+		jQuery('#avatar-preview').cropper({
+			aspectRatio: 1/1
+		});
+	};
+	var crop = function(){
+		$ionicSideMenuDelegate.canDragContent(true);
+		// Get image data from crop area
+		var dataURL = 
+			$('#avatar-preview')
+				.cropper("getCroppedCanvas")
+				.toDataURL();
+		// Destroy the cropper instance
+		$('#avatar-preview').cropper('destroy');
+		// Replace the image
+		$('#avatar-preview').attr('src',dataURL);
+		// Replace the meteor data
+		$scope.newUser.face = dataURL;
+	}
+	
+	$scope.cropButton = function(){
+		if( $scope.cropping ){
+			crop();
+		}else{
+			startCropper();
+		}
+	}
+
 	
 	// Create the user
 	$scope.createUser = function(){

@@ -3,7 +3,7 @@
 		<div class="list">
 			
 			<div class="item item-image">
-				<img ng-src="{{newUser.face}}" />
+				<img id="avatar-preview" ng-src="{{newUser.face}}" />
 			</div>
 			<button 
 				class="button item button-full button-outline button-dark"
@@ -11,6 +11,14 @@
 			>
 				Take a picture! 
 				<i class="icon ion-camera"></i>
+			</button>
+			
+			<button 
+				class="button item button-full button-outline button-dark"
+				ng-click=" cropButton() "
+			>
+				{{ cropping ? "Crop" : "Start cropper" }}
+				<i class="icon ion-crop"></i>
 			</button>
 			
 			<label class="item item-input">
