@@ -1,4 +1,4 @@
-<ion-view view-title="Chats">
+<ion-view view-title="Chat">
 	<ion-content class="">
 		<div class="list">
 			<ion-item 
@@ -7,7 +7,7 @@
 			>
 				<img 
 					ng-src="{{chatMsg.from.face}}" 
-				  ui-sref="menu.sender-detail({ attendeeId: chatMsg.from.attendeeId })"
+				  ui-sref="menu.eTab.sender-detail({ attendeeId: chatMsg.from.attendeeId })"
 				/>
 				<h2>{{ chatMsg.from.name }}</h2>
 				<p>{{ chatMsg.message }}</p>
