@@ -70,6 +70,16 @@ angular.module('monarch')
 		}
 	})
 	
+	.state('menu.event-person-detail', {
+		url: '/person/:attendeeId',
+		views: {
+			'menu': {
+				templateUrl: 'client/templates/attendeeDetail.ng.html',
+				controller: 'AttendeeDetailCtrl'
+			}
+		}
+	})
+	
 	// Event tabs
 	.state('menu.eTab', {
 		url: '/eTab',
@@ -95,16 +105,6 @@ angular.module('monarch')
 		url: '/chat/:attendeeId',
 		views: {
 			'chat': {
-				templateUrl: 'client/templates/attendeeDetail.ng.html',
-				controller: 'AttendeeDetailCtrl'
-			}
-		}
-	})
-	
-	.state('menu.eTab.event-person-detail', {
-		url: '/event/person/:attendeeId',
-		views: {
-			'event': {
 				templateUrl: 'client/templates/attendeeDetail.ng.html',
 				controller: 'AttendeeDetailCtrl'
 			}
