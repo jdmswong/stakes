@@ -232,7 +232,6 @@ angular.module('monarch')
 	
 	$scope.attendee = Attendees.getAttendee( $stateParams.attendeeId );
 	
-	console.log($scope.attendee);
 	
 })
 
