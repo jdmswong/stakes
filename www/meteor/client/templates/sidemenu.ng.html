@@ -1,5 +1,6 @@
 <ion-side-menus enable-menu-with-back-views="true">
 
+	<!-- Main content pane -->
 	<ion-side-menu-content>
 		<ion-nav-bar class="bar-dark">
 			<ion-nav-back-button>
@@ -26,6 +27,7 @@
 		<ion-nav-view name="menu"></ion-nav-view>
 	</ion-side-menu-content> 
 
+	<!-- Side menu items -->
 	<ion-side-menu side="left">
 		<ion-header-bar class="bar-calm">
 			<button menu-close class="button button-icon button-clear ion-arrow-left-c"></button>
@@ -33,7 +35,6 @@
 		</ion-header-bar>
 		<ion-content class = "has-header">
 			
-			<!-- Side menu list -->
 			<ion-list>
 				
 				<ion-item 
@@ -51,6 +52,7 @@
 				<ion-item 
 					nav-clear menu-close 
 					ui-sref="menu.createUser"
+					ng-style="{display: amIAdmin() ? 'inherit' : 'none'}"
 				>
 					Create a user
 				</ion-item>

@@ -2,7 +2,7 @@ Meteor.startup(function(){
 	// Create admin if no users
 	if (Meteor.users.find().count() === 0) {
 		console.log("No users, (admin,hypetechftw) created");
-		Accounts.createUser({
+		var adminId = Accounts.createUser({
 			username: "admin",
 			email: "jdmswong@gmail.com",
 			password: "hypetechftw",
@@ -13,6 +13,12 @@ Meteor.startup(function(){
 				phone: "440-253-9664"
 			}
 		});
+		
+		// Add to admin and super-admin roles
+		// super-admins are admins whom 
+		// can grant admin rights to others
+		Roles.addUsersToRoles(adminId, ['admin','super-admin']);
+		
 	}
 	
 	// Add users and houston admins to houston

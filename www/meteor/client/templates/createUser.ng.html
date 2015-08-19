@@ -49,7 +49,10 @@
 				<span class="input-label">Phone</span>
 				<input ng-model="newUser.phone" type="text"/>
 			</label>
-			
+			<ion-checkbox 
+				ng-style="{display: amISuperAdmin() ? 'inherit' : 'none'}" 
+				ng-model="newUser.isAdmin"
+			>Admin</ion-checkbox>
 			<button class="button button-full button-dark" ng-click="createUser()">Create Account</button>
 		</div>
 	</ion-content>

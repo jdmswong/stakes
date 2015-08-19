@@ -22,11 +22,19 @@ angular.module('monarch')
 			console.log("Error: "+error);
 		});
 	};
+	
+	$scope.amIAdmin = function(){
+		return Roles.userIsInRole($scope.me, 'admin');
+	}
 })
 
 .controller('CreateUserCtrl', function($scope, $meteor, $state, $ionicSideMenuDelegate){
 	// Placeholder pic by default
-	$scope.newUser = { face: 'ProfilePlaceholderSuit.png' };
+	var defaultNewUser = { face: 'ProfilePlaceholderSuit.png' }
+	var resetNewUser = function(){
+		$scope.newUser = JSON.parse(JSON.stringify(defaultNewUser));
+	}
+	resetNewUser();
 	
 	$scope.takePicture = function(){
 		// Define the camera settings
@@ -81,24 +89,36 @@ angular.module('monarch')
 		}
 	}
 
-	
 	// Create the user
 	$scope.createUser = function(){
-		Accounts.createUser({
+		
+		Meteor.call("registerUser",{
 			username: $scope.newUser.username,
 			email: $scope.newUser.email,
 			password: $scope.newUser.password,
-			profile: {
-				name: $scope.newUser.name,
-				company: $scope.newUser.company,
-				position: $scope.newUser.position,
-				phone: $scope.newUser.phone, 
-				face: $scope.newUser.face
+			name: $scope.newUser.name,
+			company: $scope.newUser.company,
+			position: $scope.newUser.position,
+			phone: $scope.newUser.phone, 
+			face: $scope.newUser.face,
+			isAdmin: $scope.newUser.isAdmin
+		}, function(error, result){
+			if(error){
+				console.log("User registration error: "+error);
+			}else{
+				if(result){
+					resetNewUser();
+					$state.go('menu.eTab.attendees');
+				}else{
+					console.log("Error: registerUser didn't return an ID");
+				}
 			}
-		});		
-		// TODO: only change state on successful user creation
-		$state.go('menu.eTab.attendees');
+		});
 		
+	}
+	
+	$scope.amISuperAdmin = function(){
+		return Roles.userIsInRole($scope.me, 'super-admin');
 	}
 	
 })
