@@ -30,7 +30,7 @@ angular.module('monarch')
 
 .controller('CreateUserCtrl', function($scope, $meteor, $state, $ionicSideMenuDelegate){
 	// Placeholder pic by default
-	var defaultNewUser = { face: 'ProfilePlaceholderSuit.png' }
+	var defaultNewUser = { face: PLACEHOLDER_IMG_PATH }
 	var resetNewUser = function(){
 		$scope.newUser = JSON.parse(JSON.stringify(defaultNewUser));
 	}

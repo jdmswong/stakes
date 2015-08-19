@@ -10,7 +10,8 @@ Meteor.startup(function(){
 				name: "Admin",
 				company: "Monarch",
 				position: "Admin",
-				phone: "440-253-9664"
+				phone: "440-253-9664",
+				face: HT_LOGO_PATH
 			}
 		});
 		
