@@ -132,7 +132,6 @@ angular.module('monarch')
 	// Login data bound to form
 	$scope.loginData = {};
 	
-	
 	$scope.login = function(){
 		
 		$meteor.loginWithPassword(
@@ -146,11 +145,13 @@ angular.module('monarch')
 			$scope.error = error;
 		});
 		
-		
 	}
 	
-	// new user code
-	
+	$scope.onKeyDown = function(event){
+		// On enter
+		if( event.which === 13 )
+			$scope.login();
+	};	
 })
 
 .controller('ChatCtrl', function($scope, $ionicScrollDelegate, $state, Chat, Attendees) {
