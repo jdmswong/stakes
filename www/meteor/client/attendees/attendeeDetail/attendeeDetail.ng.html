@@ -1,0 +1,18 @@
+<ion-view view-title="{{ attendee.profile.name }}">
+	<ion-content>
+		<div class="card">
+			<ion-item class="item-image">
+				<img ng-src="{{ attendee.profile.face }}" class="big-face"/>
+			</ion-item>
+			<ion-item class="item-text-wrap">
+				{{ attendee.profile.company }} - {{ attendee.profile.position }}
+			</ion-item>
+			<ion-item>
+				Email: {{ attendee.profile.publicEmail }}
+			</ion-item>
+			<ion-item>
+				Phone: {{ attendee.profile.phone }}
+			</ion-item>
+		</div>
+	</ion-content>
+</ion-view>
