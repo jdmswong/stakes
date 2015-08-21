@@ -36,6 +36,18 @@ Meteor.methods({
 		)){
 			throw new Meteor.Error(403, "Must be super-admin to create admins");
 	  }
+		if( 
+			!params.username || 
+			!params.password ||
+			!params.email 
+		){
+			if(!params.username)
+				throw new Meteor.Error("no username", "username not set");
+			if(!params.password)
+				throw new Meteor.Error("no password", "password not set");
+			if(!params.email)
+				throw new Meteor.Error("no email", "email not set");
+		}
 		var newUserId = Accounts.createUser({
 			username: params.username,
 			email: params.email,

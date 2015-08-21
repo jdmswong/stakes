@@ -39,6 +39,7 @@ angular.module('monarch')
 		});
 	};
 	var crop = function(){
+		$scope.cropping = false;
 		$ionicSideMenuDelegate.canDragContent(true);
 		// Get image data from crop area
 		var dataURL = 
@@ -61,8 +62,39 @@ angular.module('monarch')
 		}
 	}
 
+	var validateForm = function(){
+		
+		$scope.error = false;
+		
+		if( 
+			!$scope.newUser.username || 
+			!$scope.newUser.password ||
+			!$scope.newUser.email 
+		){
+			if(!$scope.newUser.username)
+				$scope.error = "username not set";
+			if(!$scope.newUser.password)
+				$scope.error = "password not set";
+			if(!$scope.newUser.email)
+				$scope.error = "email not set";
+		}
+		
+		if($scope.error)
+			return false;
+		else
+			return true;
+	}
+	
 	// Create the user
 	$scope.createUser = function(){
+		
+		if(!validateForm())
+			return false;
+		
+		// Crop the photo if cropper active
+		if( $scope.cropping ){
+			crop();
+		}
 		
 		Meteor.call("registerUser",{
 			username: $scope.newUser.username,
@@ -76,7 +108,8 @@ angular.module('monarch')
 			isAdmin: $scope.newUser.isAdmin
 		}, function(error, result){
 			if(error){
-				console.log("User registration error: "+error);
+				$scope.error = error+"";
+				console.log($scope.error);
 			}else{
 				if(result){
 					resetNewUser();

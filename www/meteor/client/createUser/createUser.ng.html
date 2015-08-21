@@ -20,7 +20,10 @@
 				{{ cropping ? "Crop" : "Start cropper" }}
 				<i class="icon ion-crop"></i>
 			</button>
-			
+			<ion-item 
+				class="error"
+				ng-style="{display: error ? 'inherit' : 'none'}"
+			>{{error}}</ion-item>
 			<label class="item item-input">
 				<span class="input-label">Username</span>
 				<input ng-model="newUser.username" type="text"/>
