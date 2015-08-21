@@ -2,12 +2,12 @@ angular.module('monarch')
 
 .controller('LoginCtrl', function($scope, $state, $meteor){
 	
-	$scope.$on('$ionicView.enter', function(e) {
-		$scope.error = null;
-  });
-	
-	// Login data bound to form
 	$scope.loginData = {};
+	
+	$scope.$on('$ionicView.leave', function(e) {
+		$scope.error = null;
+		$scope.loginData = {};
+  });
 	
 	$scope.login = function(){
 		
