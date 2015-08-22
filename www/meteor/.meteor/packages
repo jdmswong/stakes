@@ -9,7 +9,6 @@ meteor-platform
 #insecure
 urigo:angular
 urigo:ionic
-insecure
 accounts-password
 houston:admin
 mdg:camera
