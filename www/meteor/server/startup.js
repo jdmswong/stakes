@@ -18,7 +18,7 @@ Meteor.startup(function(){
 		// Add to admin and super-admin roles
 		// super-admins are admins whom 
 		// can grant admin rights to others
-		Roles.addUsersToRoles(adminId, ['admin','super-admin']);
+		Roles.addUsersToRoles(adminId, ['admin']);
 		
 	}
 	
