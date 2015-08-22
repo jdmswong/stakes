@@ -4,7 +4,6 @@ angular.module('monarch')
 	
 	$scope.attendees = Attendees.all;
 	
-	
 })
 
 ;

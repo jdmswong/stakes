@@ -3,7 +3,7 @@ angular.module('monarch')
 .factory('Chat', function(Attendees, $meteor){
 	
 	// Assign meteor collection
-	var chatMsgs = $meteor.collection(Chats);
+	var chatMsgs = $meteor.collection(Chats).subscribe("chats");
 	
 	var constructMsg = function(newMsg, senderId){
 		
