@@ -35,7 +35,8 @@ angular.module('monarch')
 		$ionicSideMenuDelegate.canDragContent(false);
 		// Invoke the cropper tool on the preview image	
 		jQuery('#avatar-preview').cropper({
-			aspectRatio: 1/1
+			aspectRatio: 1/1,
+			zoomable: false
 		});
 	};
 	var crop = function(){
@@ -44,7 +45,10 @@ angular.module('monarch')
 		// Get image data from crop area
 		var dataURL = 
 			$('#avatar-preview')
-				.cropper("getCroppedCanvas")
+				.cropper("getCroppedCanvas",{
+					width: 300,
+					height: 300
+				})
 				.toDataURL();
 		// Destroy the cropper instance
 		$('#avatar-preview').cropper('destroy');
