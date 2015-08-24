@@ -19,6 +19,9 @@ Meteor.startup(function(){
 		// super-admins are admins whom 
 		// can grant admin rights to others
 		Roles.addUsersToRoles(adminId, ['admin']);
+		Houston._admins.insert({
+			user_id: adminId
+		})
 		
 	}
 	
