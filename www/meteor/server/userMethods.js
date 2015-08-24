@@ -52,6 +52,26 @@ Meteor.methods({
 		
 		return newUserId;
 		
+	},
+	
+	// Sends meeting follow up email to users in userIds
+	// sends to all in 'getsFollowUp' role if nothing 
+	// passed in.  Follow up email has info of all other 
+	// attendees at event.
+	emailFollowUp: function(userIds){
+		var addresses = [];
+		if( userIds && userIds.length > 0 ){
+			check( userIds, [String]); 
+			addresses = Meteor.users.find({_id: {$in: userIds}},{emails:1})
+				.fetch().map(function(ele){return ele.emails[0].address;});
+		}else{
+			addresses = Meteor.users.find({},{emails:1})
+				.fetch().map(function(ele){return ele.emails[0].address;});
+		}
+		
+		console.log(addresses);
+		
+		
 	}
 	
 });
