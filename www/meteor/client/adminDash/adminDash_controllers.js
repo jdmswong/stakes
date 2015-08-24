@@ -5,7 +5,7 @@ angular.module('monarch')
 	
 	$scope.emailFollowUp = function(){
 		
-		$meteor.call("emailFollowUp",[ "9oQYRh3MSDfeD28vT", "7R5aG7ETPS9ZbHJZP"]).then(
+		$meteor.call("emailFollowUp").then(
 			function(result){
 				
 			},function(error){
