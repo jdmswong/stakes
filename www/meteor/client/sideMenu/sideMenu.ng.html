@@ -58,6 +58,13 @@
 				</ion-item>
 				<ion-item 
 					nav-clear menu-close 
+					ui-sref="menu.adminDash"
+					ng-style="{display: amIAdmin() ? 'inherit' : 'none'}"
+				>
+					Admin dashboard
+				</ion-item>
+				<ion-item 
+					nav-clear menu-close 
 					ng-click="logout()"
 				>
 					<i class="icon ion-log-out"></i>
