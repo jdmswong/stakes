@@ -69,9 +69,34 @@ Meteor.methods({
 				.fetch().map(function(ele){return ele.emails[0].address;});
 		}
 		
-		console.log(addresses);
+		var emailSettings = {
+			from: "JD@hypetech",
+			subject: "test email",
+			text: "text body"
+		};
+		
+		addresses.forEach(function(address){
+			Meteor.call('sendEmail', address, emailSettings.from, emailSettings.subject, emailSettings.text);
+		});
 		
 		
-	}
+	},
+	
+	sendEmail: function (to, from, subject, text) {
+    check([to, from, subject, text], [String]);
+
+    // Let other method calls from the same client start running,
+    // without waiting for the email sending to complete.
+    this.unblock();
+
+    Email.send({
+      to: to,
+      from: from,
+      subject: subject,
+      text: text
+    });
+		
+		console.log("email sent to "+to);
+  }
 	
 });
