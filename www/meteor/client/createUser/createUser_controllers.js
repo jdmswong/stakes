@@ -123,7 +123,8 @@ angular.module('monarch')
 	}
 	
 	$scope.amISuperAdmin = function(){
-		return Roles.userIsInRole($scope.me, 'super-admin');
+		//return Roles.userIsInRole($scope.me, 'super-admin');
+		return Meteor.user().username === 'admin';
 	}
 	
 })
