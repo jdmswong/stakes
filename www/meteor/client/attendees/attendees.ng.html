@@ -2,13 +2,20 @@
 	<ion-content>
 		<div class = "list">
 			<ion-item 
-				class = "item-text-wrap item-avatar" 
+				class = "item-text-wrap item-avatar item-icon-right" 
 				ng-repeat = "attendee in attendees"
-				ui-sref = "menu.eTab.attendee-detail({ attendeeId: attendee._id })"
 			>
-				<img ng-src = "{{attendee.profile.face}}" />
+				<img 
+					ng-src = "{{attendee.profile.face}}" 
+					ui-sref = "menu.eTab.attendee-detail({ attendeeId: attendee._id })"
+				/>
 				<h2>{{ attendee.profile.name }}</h2>
 				<p>{{ attendee.profile.company }} - {{ attendee.profile.position }}</p>
+				<i 
+					 class="icon" 
+					 ng-class="favorites.indexOf(attendee._id) != -1 ? 'ion-ios-star' : 'ion-ios-star-outline'"
+					 ng-click="toggleFavorite(attendee._id)"
+					 ></i>
 			</ion-item>
 		</div>
 	</ion-content>

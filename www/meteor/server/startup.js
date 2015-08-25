@@ -1,4 +1,15 @@
 Meteor.startup(function(){
+	
+	// Create event if it doesn't exist
+	if (Events.find().count() === 0){
+		// create default event
+		Events.insert({
+			name: "Pay it forward labs August 24, 2015",
+			attendeeFavorites: {}
+		});
+		console.log("No events present, default event created");
+	}
+
 	// Create admin if no users
 	if (Meteor.users.find().count() === 0) {
 		console.log("No users, (admin,hypetechftw) created");

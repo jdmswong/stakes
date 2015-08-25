@@ -52,6 +52,39 @@ Meteor.methods({
 		
 		return newUserId;
 		
+	},
+	
+	addFavorite: function(attendeeId){
+		
+		// check it user is logged in
+		var loggedInUser = Meteor.user();
+    if( !loggedInUser ){
+      throw new Meteor.Error("must be logged in");
+    }
+
+		// get user.favorites
+		var favorites = Meteor.users.find({_id: loggedInUser._id}).fetch()[0].favorites;
+		
+		// add new ID to favorites
+		favorites.push(attendeeId);
+		
+		// update the value in mongo
+		Meteor.users.update(loggedInUser._id, {$set: {favorites: favorites}});
+		
+	},
+	
+	getFavorites: function(){
+		// check it user is logged in
+		var loggedInUser = Meteor.user();
+    if( !loggedInUser ){
+      throw new Meteor.Error("must be logged in");
+    }
+
+		// get user.favorites
+		var favorites = Meteor.users.find({_id: loggedInUser._id}).fetch()[0].favorites;
+		
+		return favorites;
 	}
+	
 	
 });

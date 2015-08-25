@@ -1,0 +1,21 @@
+<ion-view view-title = "Favorites">
+	<ion-content>
+		<div class="card" ng-if="favorites.length === 0">
+			<div class="item item-text-wrap">
+				You have no favorites <i class="icon ion-sad-outline"></i><br>
+				Click the star next to someone's name to save them as a favorite!
+			</div>
+		</div>		
+		<div class = "list">
+			<ion-item 
+				class = "item-text-wrap item-avatar" 
+				ng-repeat = "favorite in favorites"
+				ui-sref = "menu.eTab.attendee-detail({ attendeeId: favorite._id })"
+			>
+				<img ng-src = "{{favorite.profile.face}}" />
+				<h2>{{ favorite.profile.name }}</h2>
+				<p>{{ favorite.profile.company }} - {{ favorite.profile.position }}</p>
+			</ion-item>
+		</div>
+	</ion-content>
+</ion-view>
