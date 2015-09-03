@@ -1,19 +1,14 @@
 angular.module('monarch')
 
 .controller("MenuCtrl", function($scope, $state, $rootScope, $meteor){
-	
-	$scope.$on('$ionicView.enter', function(e) {
-		// I need a way to reactively track the current user.  The 
-		// resolved currentUser doesn't change on logging out and back
-		// in as someone else.  Current solution degrades performance
-		// TODO: find a proper solution later.
-		if($rootScope.currentUser)
-			$scope.me = $rootScope.currentUser;
-		else
-			$scope.logout();
-		
-  });
-	
+
+	Tracker.autorun(function(){
+		var user = (Meteor.users.find({_id: Meteor.userId()}).fetch())[0];
+		if( user != null ){
+			$scope.me = user;
+		}
+	});
+
 	$scope.logout = function(){
 		$meteor.logout().then(function(){
 			$state.go("login");
