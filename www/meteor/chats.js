@@ -1,25 +1,29 @@
 Chats = new Mongo.Collection("chats");
 
-Meteor.publish("chats", function(){
-	return Chats.find({}, {
-		fields: {
-			// all fields
-		}
-	});
-});
+if(Meteor.isServer) {
 
-Chats.allow({
-	
-	insert: function(userId, doc){
-		return true;
-	},
-	
-	update: function(useId, doc, fieldNames, modifier){
-		return true;
-	},
-	
-	remove: function(userId, doc){
-		return true;
-	}
-	
-});
+	Meteor.publish("chats", function () {
+		return Chats.find({}, {
+			fields: {
+				// all fields
+			}
+		});
+	});
+
+	Chats.allow({
+
+		insert: function (userId, doc) {
+			return true;
+		},
+
+		update: function (useId, doc, fieldNames, modifier) {
+			return true;
+		},
+
+		remove: function (userId, doc) {
+			return true;
+		}
+
+	});
+
+}
