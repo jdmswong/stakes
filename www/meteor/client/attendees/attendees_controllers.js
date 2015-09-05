@@ -10,7 +10,7 @@ angular.module('monarch')
 
 		console.log(event);// TODO: kill this
 
-		if( event.attendeeFavorites != undefined ) {
+		if( event.attendeeFavorites && event.attendeeFavorites[Meteor.userId()] ) {
 			$scope.favorites = event.attendeeFavorites[Meteor.userId()];
 
 			console.log("Attendee favorites set for " + Meteor.userId() + " to " + $scope.favorites);  // TODO: kill this
