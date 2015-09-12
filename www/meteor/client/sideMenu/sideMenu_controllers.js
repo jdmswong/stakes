@@ -1,4 +1,4 @@
-angular.module('monarch')
+angular.module('stakes')
 
 .controller("MenuCtrl", function($scope, $state, $rootScope, $meteor){
 

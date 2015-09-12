@@ -1,4 +1,4 @@
-angular.module('monarch')
+angular.module('stakes')
 
 .controller('CreateUserCtrl', function($scope, $meteor, $state, $ionicSideMenuDelegate){
 	// Placeholder pic by default

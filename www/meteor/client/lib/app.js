@@ -1,2 +1,2 @@
-angular.module('monarch', ['ionic', 'angular-meteor']);
+angular.module('stakes', ['ionic', 'angular-meteor']);
 

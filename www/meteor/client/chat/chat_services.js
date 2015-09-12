@@ -1,4 +1,4 @@
-angular.module('monarch')
+angular.module('stakes')
 
 .factory('Chat', function(Attendees, $meteor){
 	

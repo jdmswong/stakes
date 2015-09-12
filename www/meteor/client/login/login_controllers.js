@@ -1,4 +1,4 @@
-angular.module('monarch')
+angular.module('stakes')
 
 .controller('LoginCtrl', function($scope, $state, $meteor){
 	

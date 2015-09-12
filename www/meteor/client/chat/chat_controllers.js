@@ -1,4 +1,4 @@
-angular.module('monarch')
+angular.module('stakes')
 
 .controller('ChatCtrl', function($scope, $ionicScrollDelegate, $state, Chat, Attendees) {
 	

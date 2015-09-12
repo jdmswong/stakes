@@ -1,4 +1,4 @@
-angular.module('monarch')
+angular.module('stakes')
 
 .controller('AttendeesCtrl', function($scope, $meteor, Attendees) {
 	

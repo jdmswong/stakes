@@ -1,9 +1,9 @@
-angular.module('monarch')
+angular.module('stakes')
 
 .controller('FavoritesCtrl', function($scope, $meteor) {
 	
 	$scope.favoritesIds = [];
-	
+
 	$scope.$on('$ionicView.enter', function(e) {
 	
 		$scope.$meteorSubscribe('events').then(
