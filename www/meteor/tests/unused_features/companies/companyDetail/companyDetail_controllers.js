@@ -1,4 +1,4 @@
-angular.module('monarch')
+angular.module('stakes')
 
 .controller('CompanyDetailCtrl', function($scope, $stateParams, Companies, Attendees){
 	

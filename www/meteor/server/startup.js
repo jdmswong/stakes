@@ -19,7 +19,7 @@ Meteor.startup(function(){
 			password: "hypetechftw",
 			profile: {
 				name: "Admin",
-				company: "Monarch",
+				company: "Hype Tech",
 				position: "Admin",
 				phone: "440-253-9664",
 				face: HT_LOGO_PATH
