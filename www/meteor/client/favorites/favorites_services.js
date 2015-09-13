@@ -3,14 +3,21 @@ angular.module('stakes')
 .factory('Favorites', function($meteor){
 	
 	var favorites = [];
-	$meteor.subscribe('events').then(function(subscriptionHandle){
-		var event = $meteor.collection(Events)[0];
-		
-		favorites = event.attendeeFavorites[Meteor.userId()];
-	});
-	
+	Tracker.autorun(function(){
 
-	return {
+		var event = $scope.$meteorObject(Event,{}).subscribe("events");
+
+		console.log(event);
+
+		//$meteor.subscribe('events').then(function(subscriptionHandle){
+		//
+		//	favorites = event.attendeeFavorites[Meteor.userId()];
+		//});
+
+	});
+
+
+		return {
 		
 		toggle: function(attendeeId){
 			if( favorites.indexOf(attendeeId) === -1 )

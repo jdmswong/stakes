@@ -3,13 +3,23 @@ angular.module('stakes')
 .controller('AttendeesCtrl', function($scope, $meteor, Attendees) {
 	
 	$scope.attendees = Attendees.all;
-	
-	$scope.$meteorSubscribe('events').then(function(subscriptionHandle){
-		var event = $meteor.collection(Events)[0];
-		
-		$scope.favorites = event.attendeeFavorites[Meteor.userId()];
+
+	$meteor.autorun($scope, function () {
+
+		var event = $scope.$meteorObject(Events, {}).subscribe('events');
+
+		console.log(event);// TODO: kill this
+
+		if( event.attendeeFavorites && event.attendeeFavorites[Meteor.userId()] ) {
+			$scope.favorites = event.attendeeFavorites[Meteor.userId()];
+
+			console.log("Attendee favorites set for " + Meteor.userId() + " to " + $scope.favorites);  // TODO: kill this
+
+		}
+
+
 	});
-	
+
 	$scope.toggleFavorite = function(attendeeId){
 		if( $scope.favorites.indexOf(attendeeId) === -1 )
 			// add them

@@ -1,29 +1,26 @@
-angular.module('stakes')
+angular.module('monarch')
 
 .controller('FavoritesCtrl', function($scope, $meteor) {
 	
 	$scope.favoritesIds = [];
-
-	$scope.$on('$ionicView.enter', function(e) {
 	
-		$scope.$meteorSubscribe('events').then(
-			function(subscriptionHandle){
-				var event = $meteor.collection(Events)[0];
+	$meteor.autorun($scope, function(){
 
-				$scope.favoritesIds = event.attendeeFavorites[Meteor.userId()];
-	
-			}
-		);
+		var event = $scope.$meteorObject(Events,{}).subscribe("events");
 
-		$scope.favorites = $meteor.collection(
-			function(){
-				return Meteor.users.find(
-	//				{_id: {$in: [ "Adyo8NaaZfvx4LWAs" ] }}
-					{_id: {$in: $scope.getReactively('favoritesIds') }}
-				);
-			}
+		if( event.attendeeFavorites[Meteor.userId()] != undefined ) {
 
-		);
+			$scope.favoritesIds = event.attendeeFavorites[Meteor.userId()];
+
+			$scope.favorites = $meteor.collection(
+				function(){
+					return Meteor.users.find(
+						{_id: {$in: $scope.favoritesIds}}
+					);
+				}
+			);
+
+		}
 
 	});
 })
