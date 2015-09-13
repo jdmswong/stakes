@@ -53,38 +53,36 @@ Meteor.methods({
 		return newUserId;
 		
 	},
-	
-	addFavorite: function(attendeeId){
-		
+
+	/*
+		remove ID from user.favorite[type] if found,
+		add it if not
+	*/
+	toggleFavorite: function(type, ID){
+
+		check(type, String);
+		check(ID, String);
+
+		if(type != 'users' && ID != 'groups')
+			throw new Meteor.Error("ID must be 'users' or 'groups'");
+
 		// check it user is logged in
 		var loggedInUser = Meteor.user();
     if( !loggedInUser ){
       throw new Meteor.Error("must be logged in");
     }
 
-		// get user.favorites
-		var favorites = Meteor.users.find({_id: loggedInUser._id}).fetch()[0].favorites;
-		
-		// add new ID to favorites
-		favorites.push(attendeeId);
-		
-		// update the value in mongo
-		Meteor.users.update(loggedInUser._id, {$set: {favorites: favorites}});
-		
+		if( _.contains(loggedInUser.favorites[type], ID) ){
+			Meteor.users.update(Meteor.userId(),{
+				$pull: { "favorites.users": ID }
+			});
+		}else{
+			Meteor.users.update(Meteor.userId(),{
+				$addToSet : { "favorites.users": ID }
+			});
+		}
+
 	},
 	
-	getFavorites: function(){
-		// check it user is logged in
-		var loggedInUser = Meteor.user();
-    if( !loggedInUser ){
-      throw new Meteor.Error("must be logged in");
-    }
 
-		// get user.favorites
-		var favorites = Meteor.users.find({_id: loggedInUser._id}).fetch()[0].favorites;
-		
-		return favorites;
-	}
-	
-	
 });

@@ -11,13 +11,13 @@ Accounts.onCreateUser(function(options, user){
 		// set the profile
 		user.profile = options.profile;
 	}
-	
-	// Add user favorites record to default meeting
-	var set = {};
-	set['attendeeFavorites.'+user._id] = [];
-	Events.update({},{
-		$set: set
-	});
-	
+
+	// Add favorites to user.  This must be explicitly published
+	// to be used on the client
+	user.favorites = {
+		users : [],
+		groups : []
+	};
+
 	return user;
 });

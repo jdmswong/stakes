@@ -16,14 +16,17 @@ angular.module('stakes')
 
 		$meteor.loginWithPassword(
 			$scope.loginData.username, 
-			$scope.loginData.password).then(function()
-		{
-			// login success
-			$state.go('menu.eTab.attendees');
-		},function(error){
-			// login failure
-			$scope.error = error;
-		});
+			$scope.loginData.password)
+		.then(
+			function(){
+				// login success
+				$state.go('menu.eTab.attendees');
+			},
+			function(error){
+				// login failure
+				$scope.error = error;
+			}
+		);
 		
 	}
 	

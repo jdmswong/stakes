@@ -2,26 +2,24 @@ angular.module('stakes')
 
 .controller('FavoritesCtrl', function($scope, $meteor) {
 	
-	$scope.favoritesIds = [];
+	$scope.favorites = [];
 	
 	$meteor.autorun($scope, function(){
 
-		var event = $scope.$meteorObject(Events,{}).subscribe("events");
+		if(Meteor.user()) {
 
-		if( event.attendeeFavorites[Meteor.userId()] != undefined ) {
+			if (Meteor.user().favorites) {
 
-			$scope.favoritesIds = event.attendeeFavorites[Meteor.userId()];
+				$scope.favorites = $meteor.collection(
+					function () {
+						return Meteor.users.find(
+							{_id: {$in: Meteor.user().favorites.users}}
+						);
+					}
+				);
 
-			$scope.favorites = $meteor.collection(
-				function(){
-					return Meteor.users.find(
-						{_id: {$in: $scope.favoritesIds}}
-					);
-				}
-			);
-
+			}
 		}
-
 	});
 })
 
