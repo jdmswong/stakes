@@ -56,7 +56,13 @@
 				>
 					Create a user
 				</ion-item>
-				<ion-item 
+				<ion-item
+					nav-clear menu-close
+					ui-sref="menu.createTeam"
+				>
+					Create a team
+				</ion-item>
+				<ion-item
 					nav-clear menu-close 
 					ui-sref="menu.adminDash"
 					ng-style="{display: amIAdmin() ? 'inherit' : 'none'}"
