@@ -20,7 +20,13 @@ angular.module('stakes')
 		.then(
 			function(){
 				// login success
-				$state.go('menu.eTab.attendees');
+
+				$scope.$meteorSubscribe('events').then(function(){
+
+					var eventId = Events.findOne()._id;
+
+					$state.go('menu.eTab.home', {eventId: eventId});
+				});
 			},
 			function(error){
 				// login failure
@@ -28,7 +34,7 @@ angular.module('stakes')
 			}
 		);
 		
-	}
+	};
 	
 	var validate = function(){
 

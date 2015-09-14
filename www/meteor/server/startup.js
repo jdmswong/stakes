@@ -4,7 +4,8 @@ Meteor.startup(function(){
 	if (Events.find().count() === 0){
 		// create default event
 		Events.insert({
-			name: "Default event"
+			name: "Default event",
+			attendees: []
 		});
 		console.log("No events present, default event created");
 	}

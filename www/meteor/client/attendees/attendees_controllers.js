@@ -1,7 +1,7 @@
 angular.module('stakes')
 
-.controller('AttendeesCtrl', function($scope, $meteor, Attendees) {
-	
+.controller('AttendeesCtrl', function($scope, $meteor, Attendees, event) {
+
 	$scope.attendees = Attendees.all;
 
 	$meteor.autorun($scope, function () {
