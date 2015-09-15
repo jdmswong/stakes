@@ -2,9 +2,24 @@ angular.module('stakes')
 
 .controller('AttendeesCtrl', function($scope, $meteor, Attendees, event) {
 
-	$scope.attendees = Attendees.all;
+	$scope.event = event;
 
-	$meteor.autorun($scope, function () {
+
+	$meteor.autorun($scope, function(){
+
+		$scope.attendees = $meteor.collection(
+			function () {
+				return Meteor.users.find(
+					{_id: {$in: $scope.getReactively('event.attendees')}}
+				);
+			}
+		);
+
+
+	});
+
+
+		$meteor.autorun($scope, function () {
 
 		if(Meteor.user()) {
 

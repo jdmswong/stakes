@@ -19,5 +19,8 @@ Accounts.onCreateUser(function(options, user){
 		teams : []
 	};
 
+	// Automatically add this user to all events
+	Events.update({},{ $addToSet: {attendees: user._id}} );
+
 	return user;
 });
