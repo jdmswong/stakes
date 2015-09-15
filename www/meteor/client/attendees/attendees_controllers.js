@@ -1,6 +1,6 @@
 angular.module('stakes')
 
-.controller('AttendeesCtrl', function($scope, $meteor, Attendees, event) {
+.controller('AttendeesCtrl', function($scope, $meteor, event) {
 
 	$scope.event = event;
 

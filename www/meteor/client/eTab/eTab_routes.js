@@ -24,6 +24,11 @@ angular.module('stakes')
 					// The $meteor.subscribe promise will return the event meteor object
 					return $meteor.object(Events, $stateParams.eventId);
 				});
+			},
+			attendees: function($meteor, $stateParams){
+				// if subscribe is called from within autorun, it automatically stops old
+				// subscriptions when it re-runs with new subscription data
+				return $meteor.subscribe('attendees', $stateParams.eventId);
 			}
 		}
 
