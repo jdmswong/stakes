@@ -1,8 +1,8 @@
 angular.module('stakes')
 
-.controller('AttendeeDetailCtrl', function($scope, $stateParams, Attendees) {
+.controller('AttendeeDetailCtrl', function($scope, $stateParams, $meteor) {
 	
-	$scope.attendee = Attendees.getAttendee( $stateParams.attendeeId );
+	$scope.attendee = $scope.$meteorObject(Meteor.users, $stateParams.attendeeId);
 	
 	
 })
