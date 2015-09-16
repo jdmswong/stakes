@@ -5,7 +5,11 @@ Meteor.startup(function(){
 		// create default event
 		Events.insert({
 			name: "Default event",
-			attendees: []
+			attendees: [],
+			chats: {
+				messages: [],
+				participants: []
+			}
 		});
 		console.log("No events present, default event created");
 	}

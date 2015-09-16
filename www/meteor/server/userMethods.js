@@ -83,6 +83,46 @@ Meteor.methods({
 		}
 
 	},
+
+	// Submits a chat message to an event's global chat
+	submitChat: function(eventId, message){
+
+		check(message, String);
+		check(eventId, String);
+
+		// check it user is logged in
+		var loggedInUser = Meteor.user();
+		if( !loggedInUser ){
+			throw new Meteor.Error("must be logged in");
+		}
+
+		var senderId = Meteor.userId();
+
+		var constructMsg = function(newMsg, senderId){
+
+			var result = {
+				from: senderId,
+				createdAt: new Date().getTime(),
+				message: newMsg
+			};
+			return result;
+		};
+
+		var recordsUpdated = Events.update(eventId, {
+			$addToSet: { "chats.messages": constructMsg(message, senderId) }
+		});
+
+		if( recordsUpdated === 0 )
+			throw new Meteor.Error('nothing-updated', "nothing updated");
+
+		// Add to chat participant cache
+		Events.update(eventId, {
+			$addToSet: { "chats.participants": senderId }
+		});
+
+		return recordsUpdated;
+
+	}
 	
 
 });

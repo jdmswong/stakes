@@ -6,10 +6,10 @@
 				ng-repeat="chatMsg in chats"
 			>
 				<img 
-					ng-src="{{chatMsg.from.face}}" 
+					ng-src="{{participants[chatMsg.from].face}}"
 				  ui-sref="menu.eTab.sender-detail({ attendeeId: chatMsg.from.attendeeId })"
 				/>
-				<h2>{{ chatMsg.from.name }}</h2>
+				<h2>{{ participants[chatMsg.from].name }}</h2>
 				<p>{{ chatMsg.message }}</p>
 			</ion-item>
 		</div>
