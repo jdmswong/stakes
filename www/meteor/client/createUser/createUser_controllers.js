@@ -117,14 +117,14 @@ angular.module('stakes')
 			}else{
 				if(result){
 					resetNewUser();
-					$state.go('menu.eTab.attendees');
 				}else{
 					console.log("Error: registerUser didn't return an ID");
 				}
 			}
 		});
-		
-	}
+		$state.go('menu.eTab.attendees');
+
+	};
 	
 	$scope.amISuperAdmin = function(){
 		//return Roles.userIsInRole($scope.me, 'super-admin');
